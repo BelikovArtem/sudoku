@@ -1,0 +1,65 @@
+{
+	"type": "select",
+	"user_name": "qweqwe",
+	"user_password": "qweqwe"
+}
+{
+	"type": "select",
+	"user_name": "qweqwe",
+	"user_password": "qwe"
+}
+{
+	"type": "select",
+	"user_name": "w",
+	"user_password": "qwe"
+}
+{
+	"type": "select",
+	"user_name": "qwe",
+	"user_password": "qweq"
+}
+{
+	"type": "select",
+	"user_name": "qweqwe",
+	"user_password": "qweq"
+}
+{
+	"type": "select",
+	"user_name": "qweqwe",
+	"user_password": "qweqwe"
+}
+{
+	"type": "select",
+	"user_name": "admin",
+	"user_password": "add"
+}
+{
+	"type": "insert",
+	"user_name": "artem",
+	"user_password": "test_user"
+}
+{
+	"type": "insert",
+	"user_name": "artem",
+	"user_password": "test_user"
+}
+{
+	"type": "select",
+	"user_name": "test_user2",
+	"user_password": "qweqweqwe"
+}
+{
+	"type": "insert",
+	"user_name": "test_user2",
+	"user_password": "qweqweqwe"
+}
+{
+	"type": "insert",
+	"user_name": "artem",
+	"user_password": "aa"
+}
+{
+	"type": "insert",
+	"user_name": "artem1",
+	"user_password": "aa"
+}

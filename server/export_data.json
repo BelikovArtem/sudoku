@@ -1,0 +1,76 @@
+{
+	"status": "connected",
+	"descriptor": 1004
+}
+{
+"queryResult": "success",
+"source": "select"
+}
+{
+"queryResult": "incorrect password",
+"source": "select"
+}
+{
+"queryResult": "username not found",
+"source": "select"
+}
+{
+	"status": "connected",
+	"descriptor": 980
+}
+{
+"queryResult": "username not found",
+"source": "select"
+}
+{
+"queryResult": "incorrect password",
+"source": "select"
+}
+{
+"queryResult": "success",
+"source": "select"
+}
+{
+	"status": "connected",
+	"descriptor": 1000
+}
+{
+"queryResult": "incorrect password",
+"source": "select"
+}
+{
+	"status": "connected",
+	"descriptor": 1000
+}
+{
+	"status": "connected",
+	"descriptor": 992
+}
+{
+{	"queryResult": success,
+	"source": "insert"
+}
+{
+	"status": "connected",
+	"descriptor": 968
+}
+{
+"queryResult": "username not found",
+"source": "select"
+}
+{
+	"queryResult": "success",
+	"source": "insert"
+}
+{
+	"status": "connected",
+	"descriptor": 1000
+}
+{
+	"queryResult": "username already exist",
+	"source": "insert"
+}
+{
+	"queryResult": "success",
+	"source": "insert"
+}
