@@ -11,6 +11,7 @@ server::server(QObject *parent) : QTcpServer(parent)
     QFile bddata("C:/C++ projects/qt/sudoku/server/bd_data.txt");
     bddata.open(QIODevice::ReadOnly);
     dataBase.setPassword(bddata.readAll());
+    bddata.close();
 
     if (!dataBase.open()) {
         qDebug() << "Database is cannot be connected";
