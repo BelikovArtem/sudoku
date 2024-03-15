@@ -502,7 +502,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/icons/images/gameuiproject_0052_Sudoku-.png</pixmap>
+     <pixmap resource="resource.qrc">:/icons/images/gameuiproject_0052_Sudoku-.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -524,7 +524,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/icons/images/gameuiproject_0050_Genius.png</pixmap>
+     <pixmap resource="resource.qrc">:/icons/images/gameuiproject_0050_Genius.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -549,7 +549,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/icons/images/gameuiproject_0028_Difficulty_.png</pixmap>
+     <pixmap resource="resource.qrc">:/icons/images/gameuiproject_0028_Difficulty_.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -606,7 +606,7 @@
     border-color: #000000;
 }</string>
     </property>
-    <layout class="QGridLayout" name="grid9_18">
+    <layout class="QGridLayout" name="grid10_18">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -651,7 +651,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -691,7 +691,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -731,7 +731,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -771,7 +771,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -811,7 +811,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -851,7 +851,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -891,7 +891,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -931,7 +931,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -971,7 +971,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1061,7 +1061,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1101,7 +1101,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1141,7 +1141,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1181,7 +1181,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1221,7 +1221,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1261,7 +1261,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1301,7 +1301,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1341,7 +1341,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1381,7 +1381,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1471,7 +1471,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1511,7 +1511,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1551,7 +1551,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1591,7 +1591,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1631,7 +1631,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1671,7 +1671,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1711,7 +1711,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1751,7 +1751,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1791,7 +1791,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1881,7 +1881,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1921,7 +1921,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -1961,7 +1961,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2001,7 +2001,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2041,7 +2041,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2081,7 +2081,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2121,7 +2121,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2161,7 +2161,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2201,7 +2201,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2291,7 +2291,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2331,7 +2331,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2371,7 +2371,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2411,7 +2411,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2451,7 +2451,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2491,7 +2491,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2531,7 +2531,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2571,7 +2571,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2611,7 +2611,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2701,7 +2701,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2741,7 +2741,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2781,7 +2781,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2821,7 +2821,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2861,7 +2861,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2901,7 +2901,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2941,7 +2941,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -2981,7 +2981,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3021,7 +3021,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3111,7 +3111,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3151,7 +3151,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3191,7 +3191,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3231,7 +3231,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3271,7 +3271,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3311,7 +3311,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3351,7 +3351,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3391,7 +3391,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3431,7 +3431,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3521,7 +3521,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3561,7 +3561,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3601,7 +3601,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3641,7 +3641,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3681,7 +3681,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3721,7 +3721,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3761,7 +3761,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3801,7 +3801,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3841,7 +3841,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3931,7 +3931,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -3971,7 +3971,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4011,7 +4011,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4051,7 +4051,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4091,7 +4091,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4131,7 +4131,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4171,7 +4171,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4211,7 +4211,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4251,7 +4251,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</normaloff>:/icons/images/gameuiproject_0045_Rectangle-1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4355,7 +4355,7 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonErase">
@@ -4368,7 +4368,7 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonPenMode">
@@ -4381,7 +4381,7 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonTip">
@@ -4394,7 +4394,7 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonNewGame">
@@ -4410,7 +4410,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="resources.qrc">
+     <iconset resource="resource.qrc">
       <normaloff>:/icons/images/gameuiproject_0048_New-Game.png</normaloff>:/icons/images/gameuiproject_0048_New-Game.png</iconset>
     </property>
     <property name="iconSize">
@@ -4436,7 +4436,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="resources.qrc">
+     <iconset resource="resource.qrc">
       <normaloff>:/icons/images/gameuiproject_0047_Exit.png</normaloff>:/icons/images/gameuiproject_0047_Exit.png</iconset>
     </property>
     <property name="iconSize">
@@ -4523,7 +4523,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/8.png</normaloff>:/icons/images/8.png</iconset>
        </property>
        <property name="iconSize">
@@ -4563,7 +4563,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/4.png</normaloff>:/icons/images/4.png</iconset>
        </property>
        <property name="iconSize">
@@ -4603,7 +4603,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/9.png</normaloff>:/icons/images/9.png</iconset>
        </property>
        <property name="iconSize">
@@ -4643,7 +4643,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/6.png</normaloff>:/icons/images/6.png</iconset>
        </property>
        <property name="iconSize">
@@ -4683,7 +4683,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/7.png</normaloff>:/icons/images/7.png</iconset>
        </property>
        <property name="iconSize">
@@ -4723,7 +4723,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/5.png</normaloff>:/icons/images/5.png</iconset>
        </property>
        <property name="iconSize">
@@ -4763,7 +4763,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/3.png</normaloff>:/icons/images/3.png</iconset>
        </property>
        <property name="iconSize">
@@ -4803,7 +4803,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/2.png</normaloff>:/icons/images/2.png</iconset>
        </property>
        <property name="iconSize">
@@ -4843,7 +4843,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset resource="resource.qrc">
          <normaloff>:/icons/images/1.png</normaloff>:/icons/images/1.png</iconset>
        </property>
        <property name="iconSize">
@@ -4877,7 +4877,7 @@
   </action>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="resource.qrc"/>
  </resources>
  <connections/>
 </ui>
