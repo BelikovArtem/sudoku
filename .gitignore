@@ -1,5 +1,5 @@
-client/views/build-MainWindow-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/
-client/views/MainWindow/CMakeLists.txt.user
+views/build-MainWindow-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/
+views/MainWindow/CMakeLists.txt.user
 server/bd_data.txt
 server/CMakeLists.txt.user
 build-server-Desktop_Qt_6_6_1_MinGW_64_bit-Debug/

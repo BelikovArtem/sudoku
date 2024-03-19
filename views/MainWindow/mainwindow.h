@@ -4,7 +4,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QMainWindow>
-#include "../../model-views/viewmodel.h"
+#include "../../../view-model/viewmodel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
