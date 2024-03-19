@@ -17,8 +17,7 @@ public:
     ~LoginDialog();
 
 public slots:
-    void slotSignUp();
-    void slotLogIn();
+    void _success();
 
 private slots:
     void on_pushButtonSignUp_clicked();

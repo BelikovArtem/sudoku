@@ -10,7 +10,6 @@
 #include <QSqlDatabase>
 #include <QJsonDocument>
 #include <QJsonParseError>
-#include "../view-model/viewmodel.h"
 
 class server : public QTcpServer
 {

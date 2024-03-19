@@ -74,3 +74,59 @@
 	"queryResult": "success",
 	"source": "insert"
 }
+{
+	"status": "connected",
+	"descriptor": 996
+}
+{
+	"status": "connected",
+	"descriptor": 964
+}
+{
+	"status": "connected",
+	"descriptor": 1000
+}
+{
+	"queryResult": "success",
+	"source": "select"
+}
+{
+	"queryResult": "incorrect password",
+	"source": "select"
+}
+{
+	"queryResult": "username not found",
+	"source": "select"
+}
+{
+	"status": "connected",
+	"descriptor": 1004
+}
+{
+	"queryResult": "incorrect password",
+	"source": "select"
+}
+{
+	"queryResult": "username not found",
+	"source": "select"
+}
+{
+	"queryResult": "incorrect password",
+	"source": "select"
+}
+{
+	"queryResult": "success",
+	"source": "select"
+}
+{
+	"status": "connected",
+	"descriptor": 988
+}
+{
+	"queryResult": "incorrect password",
+	"source": "select"
+}
+{
+	"queryResult": "success",
+	"source": "select"
+}

@@ -6,6 +6,13 @@ LoginDialog::LoginDialog(QWidget *parent)
     , ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
+
+    // draw background
+    QPixmap bkgnd(":/icons/images/background.png");
+    bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
 }
 
 LoginDialog::~LoginDialog()
@@ -16,13 +23,7 @@ LoginDialog::~LoginDialog()
 /*
  * PUBLIC SLOTS
  */
-void LoginDialog::slotSignUp()
-{
-    accept();
-}
-
-void LoginDialog::slotLogIn()
-{
+void LoginDialog::_success() {
     accept();
 }
 

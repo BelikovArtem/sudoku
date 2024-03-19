@@ -5,27 +5,36 @@
 #include <QTcpSocket>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QStandardItem>
+#include <QJsonObject>
 #include <QJsonDocument>
+#include <QStandardItem>
 #include <QJsonParseError>
 
-class ViewModel
+class ViewModel : public QObject
 {
+
+    Q_OBJECT
+
 public:
     ViewModel();
     ~ViewModel();
 
-    /*
-     * PUBLIC METHODS
-     */
-    static void handleCellPressed(QPushButton* cell) {
-        //QMessageBox::information(nullptr, "Success", "Cell was pressed");
-        qDebug() << "Cell was pressed";
-    }
+public slots:
+    void socketReadyRead();
+    void socketDisconnected();
+    void handleLogIn(QString username, QString password);
+    void handleSignUp(QString username, QString password);
 
 private:
+    QTcpSocket *socket;
+    QByteArray importData;
+    QByteArray exportData;
+    QJsonDocument document;
+    QJsonParseError documentError;
 
-
+signals:
+    void successfulSignUp();
+    void successfulLogIn();
 
 };
 

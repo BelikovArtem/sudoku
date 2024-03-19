@@ -13,9 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
-
-    connectCellsInGrid(ui->grid1_9);
-
 }
 
 MainWindow::~MainWindow()
@@ -24,15 +21,34 @@ MainWindow::~MainWindow()
 }
 
 /*
- * PRIVATE METHODS
+ * PUBLIC SLOTS
  */
-void MainWindow::connectCellsInGrid(QGridLayout *grid)
+void MainWindow::slotLogIn(QString username, QString password)
 {
-    for (int i = 0; i < grid->count(); i++) {
-        auto cell = qobject_cast<QPushButton*>(grid->itemAt(i)->widget());
-        if (cell)
-            connect(cell, &QPushButton::clicked, [cell](){ ViewModel::handleCellPressed(cell); });
-        else
-            qDebug() << "Cell is nullptr after qobject_cast";
-    }
+
+}
+
+void MainWindow::slotSignUp(QString username, QString password)
+{
+
+}
+
+/*
+ * PRIVATE SLOTS
+ */
+void MainWindow::on_pushButtonNewGame_clicked()
+{
+
+}
+
+void MainWindow::on_pushButtonAuthorization_clicked()
+{
+    LoginDialog *loginDialog = new LoginDialog(this);
+    // connect login dialog`s signals to viewmodel`s slots
+    connect(loginDialog, &LoginDialog::signalLogIn, &viewmodel, &ViewModel::handleLogIn);
+    connect(loginDialog, &LoginDialog::signalSignUp, &viewmodel, &ViewModel::handleSignUp);
+    // emited when logged in / signed up successfully
+    connect(&viewmodel, &ViewModel::successfulLogIn, loginDialog, &LoginDialog::_success);
+    connect(&viewmodel, &ViewModel::successfulSignUp, loginDialog, &LoginDialog::_success);
+    loginDialog->show();
 }

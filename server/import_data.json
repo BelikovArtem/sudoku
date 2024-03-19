@@ -63,3 +63,57 @@
 	"user_name": "artem1",
 	"user_password": "aa"
 }
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "bbb"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "2"
+}
+
+{
+	"type": "select",
+	"user_name": "d",
+	"user_password": "2"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "dddd"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa2",
+	"user_password": "dddd"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "aaa"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "bbb"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "ddd"
+}
+
+{
+	"type": "select",
+	"user_name": "aaa",
+	"user_password": "bbb"
+}
+

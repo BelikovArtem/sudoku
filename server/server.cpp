@@ -5,7 +5,7 @@ server::server(QObject *parent) : QTcpServer(parent)
     // connect to database
     dataBase = QSqlDatabase::addDatabase("QPSQL");
     dataBase.setHostName("localhost");  // localhost is equal to 127.0.0.1
-    dataBase.setDatabaseName("test-db");
+    dataBase.setDatabaseName("sudoku");
     dataBase.setUserName("postgres");
 
     QFile bddata("C:/C++ projects/qt/sudoku/server/bd_data.txt");
@@ -42,6 +42,7 @@ void server::socketReadyRead()
     doc = QJsonDocument::fromJson(importData, &docError);
 
     if (docError.error == QJsonParseError::NoError) {
+        auto obj = doc.object();
         /*
          * {
          *     "type": "insert",
@@ -49,7 +50,7 @@ void server::socketReadyRead()
          *     "user_password": "password"
          * }
          */
-        if (doc.object().value("type") == "insert") {
+        if (obj.value("type") == "insert") {
             QString user_name = doc.object().value("user_name").toString();
             QString user_password = doc.object().value("user_password").toString();
 
@@ -90,16 +91,16 @@ void server::socketReadyRead()
          *     "user_password": "password"
          * }
          */
-        else if (doc.object().value("type") == "select" &&
-                 !doc.object().value("user_password").toString().isEmpty()) {
+        else if (obj.value("type") == "select" &&
+                 !obj.value("user_password").toString().isEmpty()) {
 
-            QString user_name = doc.object().value("user_name").toString();
-            QString user_password = doc.object().value("user_password").toString();
+            QString user_name = obj.value("user_name").toString();
+            QString user_password = obj.value("user_password").toString();
 
             QSqlQuery query(dataBase);
 
-            QString strQuery("SELECT user_password FROM public.test_table");
-            strQuery.append(" WHERE public.test_table.user_name = '" + user_name + "'");
+            QString strQuery("SELECT user_password FROM public.users");
+            strQuery.append(" WHERE public.users.user_name = '" + user_name + "'");
 
             if (query.exec(strQuery)) {
                 QString user_password_from_database;
@@ -123,11 +124,10 @@ void server::socketReadyRead()
                     exportData.append("\t\"queryResult\": \"incorrect password\",\n");
                 }
                 exportData.append("\t\"source\": \"select\"\n");
-                exportData.append("}");
+                exportData.append("}\n");
 
                 socket->write(exportData);
                 socket->waitForBytesWritten(500);
-                exportData.append("\n");
             }
 
         } else {
@@ -171,8 +171,8 @@ void server::incomingConnection(qintptr socketDescriptor)
 
     /*
      * {
-     *     "status": server_status,
-     *     "descriptor": socket_port
+     *     "status": "connected",
+     *     "descriptor": socketDescriptor
      * }
      */
     QString responce = "{\n";
@@ -183,7 +183,7 @@ void server::incomingConnection(qintptr socketDescriptor)
     exportData.append(responce.toUtf8());
 
     socket->write(exportData);
-    socket->waitForBytesWritten(1500);
+    socket->waitForBytesWritten(1000);
 
     QFile export_log("C:/C++ projects/qt/sudoku/server/export_data.json");
     export_log.open(QIODevice::WriteOnly | QIODevice::Append);

@@ -19,6 +19,10 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        ../../view-model/viewmodel.h
+        ../../view-model/viewmodel.cpp
+        ../LoginDialog/logindialog.h
+        ../LoginDialog/logindialog.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
