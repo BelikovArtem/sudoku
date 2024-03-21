@@ -16,7 +16,6 @@ public:
     Cell(const Cell &cell) :
         number(cell.number), isOpened(cell.isOpened), position(cell.position)
     {}
-    ~Cell();
 
     /*
      * GETTERS

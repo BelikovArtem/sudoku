@@ -1,24 +1,42 @@
 {
-	"type": "select",
-	"user_name": "qqq",
-	"user_password": "ggg"
+    "type": "insert user",
+    "user_name": "test",
+    "user_password": "test"
 }
 
 {
-	"type": "insert",
-	"user_name": "qqq",
-	"user_password": "ggg"
+    "type": "select user",
+    "user_name": "йцуйцу",
+    "user_password": "qweqwe"
 }
 
 {
-	"type": "insert",
-	"user_name": "qqq8",
-	"user_password": "ggg"
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "qweqweee"
 }
 
 {
-	"type": "select",
-	"user_name": "qqq8",
-	"user_password": "ggg"
+    "type": "select user",
+    "user_name": "23123123",
+    "user_password": "qweqweee"
+}
+
+{
+    "type": "select user",
+    "user_name": "sda",
+    "user_password": "asd"
+}
+
+{
+    "type": "insert user",
+    "user_name": "sda",
+    "user_password": "asd"
+}
+
+{
+    "type": "insert user",
+    "user_name": "sda2",
+    "user_password": "asd"
 }
 

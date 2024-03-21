@@ -8,6 +8,8 @@
 #include <QJsonDocument>
 #include <QStandardItem>
 #include <QJsonParseError>
+#include "../models/User.h"
+//#include "../models/Game.h"
 
 class ViewModel : public QObject
 {
@@ -25,11 +27,19 @@ public slots:
     void handleSignUp(QString username, QString password);
 
 private:
+    /*
+     * SERVER
+     */
     QTcpSocket *socket;
     QByteArray importData;
     QByteArray exportData;
     QJsonDocument document;
     QJsonParseError documentError;
+    /*
+     * MODELS
+     */
+    User user;
+    // Game game;
 
 signals:
     void successfulSignUp();

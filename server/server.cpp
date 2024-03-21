@@ -40,93 +40,109 @@ void server::socketReadyRead()
         auto obj = doc.object();
         /*
          * {
-         *     "type": "insert",
+         *     "type": "insert user",
          *     "user_name": "username",
          *     "user_password": "password"
          * }
          */
-        if (obj.value("type") == "insert") {
-            QString user_name = obj.value("user_name").toString();
-            QString user_password = obj.value("user_password").toString();
+        if (obj["type"] == "insert user") {
+            QString user_name = obj["user_name"].toString();
+            QString user_password = obj["user_password"].toString();
 
             QSqlQuery query(dataBase);
 
             QString strQuery = "INSERT INTO public.users(\n\t";
             strQuery += "user_name, user_password)\n\t";
-            strQuery += "VALUES ('" + user_name + QString("', '") + user_password + QString("');");
+            strQuery += "VALUES ('" + user_name + QString("', '") + user_password + QString("') RETURNING *;");
 
+            QJsonObject user;
             bool queryComplete = false;
             if (!query.exec(strQuery)) {
                 qDebug() << "Username already exists";
             } else {
                 queryComplete = true;
                 qDebug() << "User created successfully";
+
+                while (query.next()) {
+                    user["user_id"] = query.value(0).toInt();
+                    user["user_name"] = query.value(1).toString();
+                    user["user_password"] = query.value(2).toString();
+                }
             }
 
             /*
              * {
+             *     "source": "insert user",
              *     "queryResult": "success" | "username already exist",
-             *     "source": "insert"
+             *     "user":
+             *     {
+             *         "user_id": id
+             *         "user_name": user_name",
+             *         "user_password": "user_password",
+             *     }
              * }
              */
-            exportData.append("{\n");
-            exportData.append((QString("\t\"queryResult\": ") +
-                               QString((queryComplete == true ? "\"success\"" : "\"username already exist\""))).toUtf8());
-            exportData.append(",\n\t\"source\": \"insert\"\n");
-            exportData.append("}");
+            QJsonObject responce;
+            responce["source"] = "insert user";
+            responce["queryResult"] = queryComplete ? "success" : "username already exists";
+            responce["user"] = user;
 
+            exportData = QJsonDocument(responce).toJson();
             socket->write(exportData);
             socket->waitForBytesWritten(1000);
-            exportData.append("\n");
         }
         /*
          * {
-         *     "type": "select",
+         *     "type": "select user",
          *     "user_name": "username",
          *     "user_password": "password"
          * }
          */
-        else if (obj.value("type") == "select") {
-
+        else if (obj["type"] == "select user") {
             QString user_name = obj.value("user_name").toString();
             QString user_password = obj.value("user_password").toString();
 
             QSqlQuery query(dataBase);
 
-            QString strQuery("SELECT user_password FROM public.users");
+            QString strQuery("SELECT * FROM public.users");
             strQuery.append(" WHERE public.users.user_name = '" + user_name + "'");
 
             if (query.exec(strQuery)) {
-                QString user_password_from_database;
+                QJsonObject user;
 
                 while(query.next()) {
-                    user_password_from_database = query.value(0).toString();
+                    user["user_id"] = query.value(0).toInt();
+                    user["user_name"] = query.value(1).toString();
+                    user["user_password"] = query.value(2).toString();
                 }
 
                 /*
                  * {
+                 *     "source": "select user",
                  *     "queryResult": "success" | "incorrect password" | "username not found",
-                 *     "source": "select"
+                 *     "user": {
+                 *         "user_id": id,
+                 *         "user_name": "name",
+                 *         "user_password": "password"
                  * }
                  */
-                exportData.append("{\n");
-                if (user_password_from_database.isEmpty()) {
-                    exportData.append("\t\"queryResult\": \"username not found\",\n");
-                } else if (user_password_from_database == user_password) {
-                    exportData.append("\t\"queryResult\": \"success\",\n");
-                } else {
-                    exportData.append("\t\"queryResult\": \"incorrect password\",\n");
-                }
-                exportData.append("\t\"source\": \"select\"\n");
-                exportData.append("}\n");
+                QJsonObject responce;
+                responce["source"] = "select user";
+                if (user.isEmpty())
+                    responce["queryResult"] = "username not found";
+                else if (user["user_password"] == user_password)
+                    responce["queryResult"] = "success";
+                else
+                    responce["queryResult"] = "incorrect password";
+                responce["user"] = user;
 
+                exportData = QJsonDocument(responce).toJson();
                 socket->write(exportData);
                 socket->waitForBytesWritten(500);
             }
 
         } else {
             qDebug() << "Unknown Json document from client";
-
         }
 
         logImport(importData);
@@ -160,13 +176,11 @@ void server::incomingConnection(qintptr socketDescriptor)
      *     "descriptor": socketDescriptor
      * }
      */
-    QString responce = "{\n";
-    responce += "\t\"status\": \"connected\",\n";
-    responce += "\t\"descriptor\": " + QString::number(socketDescriptor);
-    responce += "\n}\n";
+    QJsonObject responce;
+    responce["status"] = "connected";
+    responce["descriptor"] = socketDescriptor;
 
-    exportData.append(responce.toUtf8());
-
+    exportData = QJsonDocument(responce).toJson();
     socket->write(exportData);
     socket->waitForBytesWritten(1000);
     logExport(exportData);

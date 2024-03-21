@@ -2,11 +2,13 @@ enum GameState {
     Win,
     Continues,
     Loss,
-    Pause
+    Pause,
+    NotStarted
 };
 
 enum DifficultyLevel {
     Low,
     Medium,
-    High
+    High,
+    NotChoosed
 };
