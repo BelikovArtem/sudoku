@@ -16,7 +16,7 @@ class server : public QTcpServer
     Q_OBJECT
 public:
     server(QObject *parent = nullptr);
-    ~server();
+    ~server() {};
 
 public slots:
     void socketReadyRead();
@@ -29,6 +29,12 @@ private:
     QSqlDatabase dataBase;
     QJsonDocument doc;
     QJsonParseError docError;
+
+    /*
+     * PRIVATE METHODS
+     */
+    void logImport(QByteArray &data);
+    void logExport(QByteArray &data);
 
 protected:
     void incomingConnection(qintptr socketDescriptor) override;

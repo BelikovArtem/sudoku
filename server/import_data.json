@@ -1,119 +1,24 @@
 {
 	"type": "select",
-	"user_name": "qweqwe",
-	"user_password": "qweqwe"
+	"user_name": "qqq",
+	"user_password": "ggg"
 }
-{
-	"type": "select",
-	"user_name": "qweqwe",
-	"user_password": "qwe"
-}
-{
-	"type": "select",
-	"user_name": "w",
-	"user_password": "qwe"
-}
-{
-	"type": "select",
-	"user_name": "qwe",
-	"user_password": "qweq"
-}
-{
-	"type": "select",
-	"user_name": "qweqwe",
-	"user_password": "qweq"
-}
-{
-	"type": "select",
-	"user_name": "qweqwe",
-	"user_password": "qweqwe"
-}
-{
-	"type": "select",
-	"user_name": "admin",
-	"user_password": "add"
-}
+
 {
 	"type": "insert",
-	"user_name": "artem",
-	"user_password": "test_user"
+	"user_name": "qqq",
+	"user_password": "ggg"
 }
+
 {
 	"type": "insert",
-	"user_name": "artem",
-	"user_password": "test_user"
-}
-{
-	"type": "select",
-	"user_name": "test_user2",
-	"user_password": "qweqweqwe"
-}
-{
-	"type": "insert",
-	"user_name": "test_user2",
-	"user_password": "qweqweqwe"
-}
-{
-	"type": "insert",
-	"user_name": "artem",
-	"user_password": "aa"
-}
-{
-	"type": "insert",
-	"user_name": "artem1",
-	"user_password": "aa"
-}
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "bbb"
+	"user_name": "qqq8",
+	"user_password": "ggg"
 }
 
 {
 	"type": "select",
-	"user_name": "aaa",
-	"user_password": "2"
-}
-
-{
-	"type": "select",
-	"user_name": "d",
-	"user_password": "2"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "dddd"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa2",
-	"user_password": "dddd"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "aaa"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "bbb"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "ddd"
-}
-
-{
-	"type": "select",
-	"user_name": "aaa",
-	"user_password": "bbb"
+	"user_name": "qqq8",
+	"user_password": "ggg"
 }
 

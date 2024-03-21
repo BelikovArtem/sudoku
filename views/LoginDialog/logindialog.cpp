@@ -23,8 +23,25 @@ LoginDialog::~LoginDialog()
 /*
  * PUBLIC SLOTS
  */
-void LoginDialog::_success() {
+void LoginDialog::_success()
+{
+    QMessageBox::information(this, "OK", "Successful authorization");
     accept();
+}
+
+void LoginDialog::_incorrectPassword()
+{
+    QMessageBox::warning(this, "Warning", "Incorrect password");
+}
+
+void LoginDialog::_usernameNotFound()
+{
+    QMessageBox::warning(this, "Warning", "Username not found");
+}
+
+void LoginDialog::_takenUsername()
+{
+    QMessageBox::warning(this, "Warning", "Username already taken");
 }
 
 /*

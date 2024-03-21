@@ -9,4 +9,4 @@ enum DifficultyLevel {
     Low,
     Medium,
     High
-}; 
+};

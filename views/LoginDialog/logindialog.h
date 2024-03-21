@@ -18,6 +18,9 @@ public:
 
 public slots:
     void _success();
+    void _incorrectPassword();
+    void _usernameNotFound();
+    void _takenUsername();
 
 private slots:
     void on_pushButtonSignUp_clicked();

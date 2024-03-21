@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QTcpSocket>
-#include <QMessageBox>
 #include <QPushButton>
 #include <QJsonObject>
 #include <QJsonDocument>
@@ -35,7 +34,12 @@ private:
 signals:
     void successfulSignUp();
     void successfulLogIn();
-
+    void warningTakenUsername();
+    void warningIncorrectPassword();
+    void warningUsernameNotFound();
+    void warningUnknownJSON();
+    void warningJSONParseError();
+    void errorServerDisconnected();
 };
 
 #endif // VIEWMODEL_H

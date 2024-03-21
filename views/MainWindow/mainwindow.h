@@ -22,8 +22,9 @@ public:
     ~MainWindow();
 
 public slots:
-    void slotLogIn(QString username, QString password);
-    void slotSignUp(QString username, QString password);
+    void handleUnknownJSON();
+    void handleJSONParseError();
+    void handleServerDisconnected();
 
 private slots:
     void on_pushButtonNewGame_clicked();

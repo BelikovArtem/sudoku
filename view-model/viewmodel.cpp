@@ -42,17 +42,31 @@ void ViewModel::handleLogIn(QString username, QString password) {
         socket->write(exportData);
         socket->waitForBytesWritten(500);
         exportData.clear();
-
     } else {
-        QMessageBox::warning(nullptr, "Error", "Server isn`t connected");
+        emit errorServerDisconnected();
     }
 }
 
 void ViewModel::handleSignUp(QString username, QString password) {
     if (socket->state() == QTcpSocket::ConnectedState) {
+        /*
+        * {
+        *     "type": "insert",
+        *     "user_name": username,
+        *     "user_password": password
+        * }
+        */
+        exportData.append("{\n");
+        exportData.append("\t\"type\": \"insert\",\n");
+        exportData.append("\t\"user_name\": \"" + username.toUtf8() + "\",\n");
+        exportData.append("\t\"user_password\": \"" + password.toUtf8() + "\"\n");
+        exportData.append("}\n");
 
+        socket->write(exportData);
+        socket->waitForBytesWritten(500);
+        exportData.clear();
     } else {
-        QMessageBox::warning(nullptr, "Error", "Server isn`t connected");
+        emit errorServerDisconnected();
     }
 }
 
@@ -65,7 +79,7 @@ void ViewModel::socketReadyRead()
         document = QJsonDocument::fromJson(importData, &documentError);
 
         if (documentError.error != QJsonParseError::NoError) {
-            QMessageBox::warning(nullptr, "Error", "Unknown JSON from server");
+            emit warningJSONParseError();
             return;
         }
 
@@ -78,7 +92,7 @@ void ViewModel::socketReadyRead()
         */
         if (obj.value("status").toString() == "connected" &&
             obj.value("descriptor").toInt() > 0) {
-            qDebug() << "Client connected successfelly";
+            qDebug() << "Client connected successfully";
         }
         /*
         * {
@@ -89,13 +103,29 @@ void ViewModel::socketReadyRead()
         else if (obj.value("source").toString() == "select" ){
             auto qRes = obj.value("queryResult").toString();
             if (qRes == "success") {
-                QMessageBox::information(nullptr, "Success", "Logged In");
                 emit successfulLogIn();
             } else if (qRes == "incorrect password") {
-                QMessageBox::information(nullptr, "Warning", "Incorrect password");
+                emit warningIncorrectPassword();
             } else if (qRes == "username not found") {
-                QMessageBox::information(nullptr, "Warning", "Username not found");
+                emit warningUsernameNotFound();
             }
+        }
+        /*
+        * {
+        *     "queryResult": "success" | "username already exist",
+        *     "source": "insert"
+        * }
+        */
+        else if (obj.value("source").toString() == "insert") {
+            auto qRes = obj.value("queryResult").toString();
+            if (qRes == "success") {
+                emit successfulSignUp();
+            } else {
+                emit warningTakenUsername();
+            }
+        }
+        else {
+            emit warningUnknownJSON();
         }
 
 

@@ -27,11 +27,6 @@ server::server(QObject *parent) : QTcpServer(parent)
     }
 }
 
-server::~server()
-{
-
-}
-
 /*
  * PUBLIC SLOTS
  */
@@ -51,12 +46,12 @@ void server::socketReadyRead()
          * }
          */
         if (obj.value("type") == "insert") {
-            QString user_name = doc.object().value("user_name").toString();
-            QString user_password = doc.object().value("user_password").toString();
+            QString user_name = obj.value("user_name").toString();
+            QString user_password = obj.value("user_password").toString();
 
             QSqlQuery query(dataBase);
 
-            QString strQuery = "INSERT INTO public.test_table(\n\t";
+            QString strQuery = "INSERT INTO public.users(\n\t";
             strQuery += "user_name, user_password)\n\t";
             strQuery += "VALUES ('" + user_name + QString("', '") + user_password + QString("');");
 
@@ -91,8 +86,7 @@ void server::socketReadyRead()
          *     "user_password": "password"
          * }
          */
-        else if (obj.value("type") == "select" &&
-                 !obj.value("user_password").toString().isEmpty()) {
+        else if (obj.value("type") == "select") {
 
             QString user_name = obj.value("user_name").toString();
             QString user_password = obj.value("user_password").toString();
@@ -135,18 +129,9 @@ void server::socketReadyRead()
 
         }
 
-        importData.append("\n");
-        QFile import_log("C:/C++ projects/qt/sudoku/server/import_data.json");
-        import_log.open(QIODevice::WriteOnly | QIODevice::Append);
-        import_log.write(importData);
-        import_log.close();
-        importData.clear();
+        logImport(importData);
+        logExport(exportData);
 
-        QFile export_log("C:/C++ projects/qt/sudoku/server/export_data.json");
-        export_log.open(QIODevice::WriteOnly | QIODevice::Append);
-        export_log.write(exportData);
-        export_log.close();
-        exportData.clear();
     } else {
         qDebug() << "Parse error in Json from client " + docError.errorString();
     }
@@ -184,10 +169,28 @@ void server::incomingConnection(qintptr socketDescriptor)
 
     socket->write(exportData);
     socket->waitForBytesWritten(1000);
+    logExport(exportData);
+}
 
+/*
+* PRIVATE METHODS
+*/
+void server::logImport(QByteArray &data)
+{
+    data.append("\n");
+    QFile import_log("C:/C++ projects/qt/sudoku/server/import_data.json");
+    import_log.open(QIODevice::WriteOnly | QIODevice::Append);
+    import_log.write(data);
+    import_log.close();
+    data.clear();
+}
+
+void server::logExport(QByteArray &data)
+{
+    data.append("\n");
     QFile export_log("C:/C++ projects/qt/sudoku/server/export_data.json");
     export_log.open(QIODevice::WriteOnly | QIODevice::Append);
-    export_log.write(exportData);
+    export_log.write(data);
     export_log.close();
-    exportData.clear();
+    data.clear();
 }

@@ -13,6 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
+
+    // userful signal / slot connection between view & viewmodel
+    connect(&viewmodel, &ViewModel::warningUnknownJSON, this, &MainWindow::handleUnknownJSON);
+    connect(&viewmodel, &ViewModel::warningJSONParseError, this, &MainWindow::handleJSONParseError);
+    connect(&viewmodel, &ViewModel::errorServerDisconnected, this, &MainWindow::handleServerDisconnected);
 }
 
 MainWindow::~MainWindow()
@@ -23,13 +28,19 @@ MainWindow::~MainWindow()
 /*
  * PUBLIC SLOTS
  */
-void MainWindow::slotLogIn(QString username, QString password)
+void MainWindow::handleUnknownJSON()
 {
-
+    QMessageBox::warning(this, "Warning", "Unknown JSON from server");
 }
 
-void MainWindow::slotSignUp(QString username, QString password)
+void MainWindow::handleJSONParseError()
 {
+    QMessageBox::warning(this, "Warning", "JSON parse error from server");
+}
+
+void MainWindow::handleServerDisconnected()
+{
+    QMessageBox::critical(this, "Error", "Server isn`t connected");
 
 }
 
@@ -44,11 +55,22 @@ void MainWindow::on_pushButtonNewGame_clicked()
 void MainWindow::on_pushButtonAuthorization_clicked()
 {
     LoginDialog *loginDialog = new LoginDialog(this);
+
     // connect login dialog`s signals to viewmodel`s slots
     connect(loginDialog, &LoginDialog::signalLogIn, &viewmodel, &ViewModel::handleLogIn);
     connect(loginDialog, &LoginDialog::signalSignUp, &viewmodel, &ViewModel::handleSignUp);
-    // emited when logged in / signed up successfully
+    // emitted when authorization is successful
     connect(&viewmodel, &ViewModel::successfulLogIn, loginDialog, &LoginDialog::_success);
     connect(&viewmodel, &ViewModel::successfulSignUp, loginDialog, &LoginDialog::_success);
+    // emitted when authorization errors occured
+    connect(&viewmodel, &ViewModel::warningIncorrectPassword, loginDialog, &LoginDialog::_incorrectPassword);
+    connect(&viewmodel, &ViewModel::warningTakenUsername, loginDialog, &LoginDialog::_takenUsername);
+    connect(&viewmodel, &ViewModel::warningUsernameNotFound, loginDialog, &LoginDialog::_usernameNotFound);
+
     loginDialog->show();
+
+    // if authorization is success, disable profile button
+    if (loginDialog->exec() == QDialog::Accepted) {
+        ui->pushButtonAuthorization->setEnabled(false);
+    }
 }
