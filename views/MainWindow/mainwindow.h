@@ -4,8 +4,10 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QMainWindow>
-#include "../../view-model/viewmodel.h"
+#include "../GameWindow/gamewindow.h"
 #include "../LoginDialog/logindialog.h"
+#include "../../view-model/viewmodel.h"
+#include "../DifficultyLevelDialog/difficultyleveldialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,6 +27,7 @@ public slots:
     void handleUnknownJSON();
     void handleJSONParseError();
     void handleServerDisconnected();
+    void showGameWindow(int difficultyLevel);
 
 private slots:
     void on_pushButtonNewGame_clicked();
@@ -34,9 +37,5 @@ private slots:
 private:
     Ui::MainWindow *ui;
     ViewModel viewmodel;
-    /*
-     * PRIVATE METHODS
-     */
-
 };
 #endif // MAINWINDOW_H

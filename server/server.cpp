@@ -74,8 +74,7 @@ void server::socketReadyRead()
              * {
              *     "source": "insert user",
              *     "queryResult": "success" | "username already exist",
-             *     "user":
-             *     {
+             *     "user": {
              *         "user_id": id
              *         "user_name": user_name",
              *         "user_password": "user_password",
@@ -87,9 +86,7 @@ void server::socketReadyRead()
             responce["queryResult"] = queryComplete ? "success" : "username already exists";
             responce["user"] = user;
 
-            exportData = QJsonDocument(responce).toJson();
-            socket->write(exportData);
-            socket->waitForBytesWritten(1000);
+            sendResponceToClient(responce);
         }
         /*
          * {
@@ -99,8 +96,8 @@ void server::socketReadyRead()
          * }
          */
         else if (obj["type"] == "select user") {
-            QString user_name = obj.value("user_name").toString();
-            QString user_password = obj.value("user_password").toString();
+            QString user_name = obj["user_name"].toString();
+            QString user_password = obj["user_password"].toString();
 
             QSqlQuery query(dataBase);
 
@@ -124,6 +121,7 @@ void server::socketReadyRead()
                  *         "user_id": id,
                  *         "user_name": "name",
                  *         "user_password": "password"
+                 *     }
                  * }
                  */
                 QJsonObject responce;
@@ -136,11 +134,40 @@ void server::socketReadyRead()
                     responce["queryResult"] = "incorrect password";
                 responce["user"] = user;
 
-                exportData = QJsonDocument(responce).toJson();
-                socket->write(exportData);
-                socket->waitForBytesWritten(500);
+                sendResponceToClient(responce);
             }
+        }
+        /*
+        * {
+        *     "type": "select grid",
+        *     "difficultyLevel": "low" | "medium" | "high"
+        * }
+        */
+        else if (obj["type"] == "select grid") {
+            QString difficultyLevel = obj["difficultyLevel"].toString();
 
+            QSqlQuery query(dataBase);
+
+            QString strQuery("SELECT grid FROM public.grids ");
+            strQuery.append("WHERE difficulty = '" + difficultyLevel + "' ");
+            strQuery.append(" ORDER BY RANDOM() ");
+            strQuery.append("LIMIT 1");
+
+            if (query.exec(strQuery)) {
+                /*
+                * {
+                *     "source": "select grid",
+                *     "queryResult": grid
+                * }
+                */
+                QJsonObject responce;
+                responce["source"] = "select grid";
+                while (query.next()) {
+                    responce["queryResult"] = query.value(0).toString();
+                }
+
+                sendResponceToClient(responce);
+            }
         } else {
             qDebug() << "Unknown Json document from client";
         }
@@ -180,10 +207,7 @@ void server::incomingConnection(qintptr socketDescriptor)
     responce["status"] = "connected";
     responce["descriptor"] = socketDescriptor;
 
-    exportData = QJsonDocument(responce).toJson();
-    socket->write(exportData);
-    socket->waitForBytesWritten(1000);
-    logExport(exportData);
+    sendResponceToClient(responce);
 }
 
 /*
@@ -207,4 +231,13 @@ void server::logExport(QByteArray &data)
     export_log.write(data);
     export_log.close();
     data.clear();
+}
+
+void server::sendResponceToClient(const QJsonObject responce)
+{
+    exportData = QJsonDocument(responce).toJson();
+    socket->write(exportData);
+    socket->waitForBytesWritten(1000);
+    logExport(exportData);
+    exportData.clear();
 }

@@ -14,10 +14,11 @@ MainWindow::MainWindow(QWidget *parent)
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
-    // userful signal / slot connection between view & viewmodel
+    // useful signal / slot connection between view & viewmodel
     connect(&viewmodel, &ViewModel::warningUnknownJSON, this, &MainWindow::handleUnknownJSON);
     connect(&viewmodel, &ViewModel::warningJSONParseError, this, &MainWindow::handleJSONParseError);
     connect(&viewmodel, &ViewModel::errorServerDisconnected, this, &MainWindow::handleServerDisconnected);
+    connect(&viewmodel, &ViewModel::newGameStarted, this, &MainWindow::showGameWindow);
 }
 
 MainWindow::~MainWindow()
@@ -41,7 +42,14 @@ void MainWindow::handleJSONParseError()
 void MainWindow::handleServerDisconnected()
 {
     QMessageBox::critical(this, "Error", "Server isn`t connected");
+}
 
+void MainWindow::showGameWindow(int difficultyLevel)
+{
+    GameWindow *gameWindow = new GameWindow(this);
+    connect(gameWindow, &GameWindow::cellClicked, &viewmodel, &ViewModel::handleCellClicked);
+    gameWindow->setModal(true);
+    gameWindow->show();
 }
 
 /*
@@ -49,7 +57,11 @@ void MainWindow::handleServerDisconnected()
  */
 void MainWindow::on_pushButtonNewGame_clicked()
 {
+    DifficultyLevelDialog *difficultylevelDialog = new DifficultyLevelDialog(this);
+    connect(difficultylevelDialog, &DifficultyLevelDialog::newGame, &viewmodel, &ViewModel::handleNewGame);
 
+    difficultylevelDialog->setModal(true);
+    difficultylevelDialog->show();
 }
 
 void MainWindow::on_pushButtonAuthorization_clicked()
@@ -67,6 +79,7 @@ void MainWindow::on_pushButtonAuthorization_clicked()
     connect(&viewmodel, &ViewModel::warningTakenUsername, loginDialog, &LoginDialog::_takenUsername);
     connect(&viewmodel, &ViewModel::warningUsernameNotFound, loginDialog, &LoginDialog::_usernameNotFound);
 
+    loginDialog->setModal(true);
     loginDialog->show();
 
     // if authorization is success, disable profile button

@@ -5,7 +5,7 @@
 */
 void Game::checkWin()
 {
-    if (openedCells == CELLS_COUNT) {
+    if (openedCellsCount == CELLS_COUNT) {
         gameState = GameState::Win;
     }
 }
@@ -14,7 +14,7 @@ void Game::openCell(Cell::Position pos)
 {
     lastOpenedCell = grid.at(pos.i * pos.j);
     lastOpenedCell->setOpenStatus(true);
-    openedCells++;
+    openedCellsCount++;
 }
 
 void Game::clearCell(Cell::Position pos)
@@ -29,8 +29,9 @@ void Game::endGame()
 
 void Game::undo()
 {
-    if (lastOpenedCell)
+    if (lastOpenedCell) {
         lastOpenedCell->setOpenStatus(false);
+    }
 }
 
 void Game::pauseGame()

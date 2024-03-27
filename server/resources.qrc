@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/logs">
+        <file>logs/export_data.json</file>
+        <file>logs/import_data.json</file>
+    </qresource>
+</RCC>

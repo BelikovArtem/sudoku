@@ -13,11 +13,11 @@ class Game : public QObject {
 public:
     Game()
     {
-        grid = QList<Cell*>();          // Sudoku grid
+        grid = QList<Cell*>();           // Sudoku grid        
         gameState = NotStarted;          // Win, Continues, Loss, Pause, NotStarted
-        level = NotChoosed;                          // Low, Medium, High, NotChoosed
+        level = NotChoosed;              // Low, Medium, High, NotChoosed
         Cell *lastOpenedCell = nullptr;
-        openedCells = 0;
+        openedCellsCount = 0;
         scores = 0;
         QTimer *timer = nullptr;
         time = 0;
@@ -27,7 +27,7 @@ public:
     {
         level =_level;
 
-        for (Cell _ : _grid)
+        for (const auto &_ : _grid)
             grid.append(new Cell(_));
 
         timer = new QTimer(nullptr);
@@ -55,14 +55,18 @@ public:
     void undo();
     void pauseGame();
 
+    /*
+     * PUBLIC FIELDS
+     */
+    const int CELLS_COUNT = 81;
+
 private:
     QList<Cell*> grid;
     GameState gameState;
     DifficultyLevel level;
     Cell *lastOpenedCell;
-    int openedCells;
+    int openedCellsCount;
     int scores;
-    const int CELLS_COUNT = 81;
     QTimer *timer;
     long time;
 

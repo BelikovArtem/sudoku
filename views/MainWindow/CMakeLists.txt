@@ -23,6 +23,12 @@ set(PROJECT_SOURCES
         ../../view-model/viewmodel.cpp
         ../LoginDialog/logindialog.h
         ../LoginDialog/logindialog.cpp
+        ../GameWindow/gamewindow.h
+        ../GameWindow/gamewindow.cpp
+        ../../models/Game.h
+        ../../models/Game.cpp
+        ../DifficultyLevelDialog/difficultyleveldialog.h
+        ../DifficultyLevelDialog/difficultyleveldialog.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -18,6 +18,7 @@ add_executable(server
   main.cpp
   server.h server.cpp
 
+
 )
 target_link_libraries(server Qt${QT_VERSION_MAJOR}::Core Qt6::Sql Qt6::Network)
 

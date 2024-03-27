@@ -35,6 +35,7 @@ private:
      */
     void logImport(QByteArray &data);
     void logExport(QByteArray &data);
+    void sendResponceToClient(const QJsonObject responce);
 
 protected:
     void incomingConnection(qintptr socketDescriptor) override;

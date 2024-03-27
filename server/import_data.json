@@ -1,42 +1,80 @@
 {
-    "type": "insert user",
-    "user_name": "test",
-    "user_password": "test"
+    "difficultyLevel": "medium",
+    "type": "select grid"
 }
 
 {
-    "type": "select user",
-    "user_name": "йцуйцу",
-    "user_password": "qweqwe"
+    "difficultyLevel": "medium",
+    "type": "select grid"
 }
 
 {
-    "type": "select user",
-    "user_name": "qweqwe",
-    "user_password": "qweqweee"
+    "difficultyLevel": "low",
+    "type": "select grid"
 }
 
 {
-    "type": "select user",
-    "user_name": "23123123",
-    "user_password": "qweqweee"
+    "difficultyLevel": "medium",
+    "type": "select grid"
 }
 
 {
-    "type": "select user",
-    "user_name": "sda",
-    "user_password": "asd"
+    "difficultyLevel": "low",
+    "type": "select grid"
 }
 
 {
-    "type": "insert user",
-    "user_name": "sda",
-    "user_password": "asd"
+    "difficultyLevel": "medium",
+    "type": "select grid"
 }
 
 {
-    "type": "insert user",
-    "user_name": "sda2",
-    "user_password": "asd"
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "medium",
+    "type": "select grid"
 }
 

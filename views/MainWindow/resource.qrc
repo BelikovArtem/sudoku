@@ -11,7 +11,6 @@
         <file>images/9.png</file>
         <file>images/background.png</file>
         <file>images/erase.png</file>
-        <file>images/gameuiproject_0009_Rectangle-6.png</file>
         <file>images/gameuiproject_0015_Time_-00_00.png</file>
         <file>images/gameuiproject_0016_Mistakes_-0_0.png</file>
         <file>images/gameuiproject_0024_Score_-0000.png</file>
@@ -19,15 +18,33 @@
         <file>images/gameuiproject_0026_Medium.png</file>
         <file>images/gameuiproject_0027_Low.png</file>
         <file>images/gameuiproject_0028_Difficulty_.png</file>
-        <file>images/gameuiproject_0045_Rectangle-1.png</file>
-        <file>images/gameuiproject_0047_Exit.png</file>
-        <file>images/gameuiproject_0048_New-Game.png</file>
-        <file>images/gameuiproject_0049_Rectangle-12.png</file>
-        <file>images/gameuiproject_0050_Genius.png</file>
-        <file>images/gameuiproject_0051_Rectangle-11.png</file>
-        <file>images/gameuiproject_0052_Sudoku-.png</file>
         <file>images/note.png</file>
         <file>images/restart.png</file>
         <file>images/tip.png</file>
+        <file>images/difficulty_0010_Select-difficulty_.png</file>
+        <file>images/confirm.png</file>
+        <file>images/cancel.png</file>
+        <file>images/dialog-background.png</file>
+        <file>images/difficultyHigh.png</file>
+        <file>images/difficultyLow.png</file>
+        <file>images/difficultyMedium.png</file>
+        <file>images/Change Data.png</file>
+        <file>images/Change Profile.png</file>
+        <file>images/Change Username.png</file>
+        <file>images/changepassword.png</file>
+        <file>images/Exit.png</file>
+        <file>images/Leaderboard.png</file>
+        <file>images/Log In.png</file>
+        <file>images/New Game.png</file>
+        <file>images/signup.png</file>
+        <file>images/mainmenu_0012_SudokuIcon.png</file>
+        <file>images/mainmenu_0000_Profile.png</file>
+        <file>images/mainmenu_0001_403017_avatar_default_head_person_unknown_icon.png</file>
+        <file>images/Settings_0005_Settings.png</file>
+        <file>images/mainmenu_0002_1827112.png</file>
+        <file>images/SudokuGenius.png</file>
+    </qresource>
+    <qresource prefix="/example">
+        <file>map.txt</file>
     </qresource>
 </RCC>
