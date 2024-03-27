@@ -22,12 +22,12 @@ DifficultyLevelDialog::DifficultyLevelDialog(QWidget *parent)
     // set buttons icons
     QIcon confirmIcon(QPixmap(":/icons/images/confirm.png"));
     ui->pushButtonConfirm->setIcon(confirmIcon);
-    ui->pushButtonConfirm->setIconSize(QSize(130, 40));
-    ui->pushButtonConfirm->setFixedSize(QSize(130, 40));
+    ui->pushButtonConfirm->setIconSize(QSize(130, 30));
+    ui->pushButtonConfirm->setFixedSize(QSize(130, 30));
     QIcon cancelIcon(QPixmap(":/icons/images/cancel.png"));
     ui->pushButtonCancel->setIcon(cancelIcon);
-    ui->pushButtonCancel->setIconSize(QSize(130, 40));
-    ui->pushButtonCancel->setFixedSize(QSize(130, 40));
+    ui->pushButtonCancel->setIconSize(QSize(130, 30));
+    ui->pushButtonCancel->setFixedSize(QSize(130, 30));
 
     // set pixmaps to comboBox
     QPixmap pixmapLow(":/icons/images/difficultyLow.png");
@@ -52,9 +52,7 @@ void DifficultyLevelDialog::on_pushButtonConfirm_clicked()
     accept();
 }
 
-
 void DifficultyLevelDialog::on_pushButtonCancel_clicked()
 {
     reject();
 }
-

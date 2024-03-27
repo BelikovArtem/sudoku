@@ -490,6 +490,131 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="minimumSize">
+       <size>
+        <width>421</width>
+        <height>421</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>421</width>
+        <height>421</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resource.qrc">:/icons/images/mainmenu_0012_SudokuIcon.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButtonNewGame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/icons/images/New Game.png</normaloff>:/icons/images/New Game.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonLeaderboard">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/icons/images/Leaderboard.png</normaloff>:/icons/images/Leaderboard.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonExit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/icons/images/Exit.png</normaloff>:/icons/images/Exit.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>273</width>
+          <height>77</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
     <item row="0" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -577,6 +702,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonSettings">
+        <property name="minimumSize">
+         <size>
+          <width>75</width>
+          <height>69</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -596,95 +727,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="1" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QPushButton" name="pushButtonNewGame">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resource.qrc">
-          <normaloff>:/icons/images/New Game.png</normaloff>:/icons/images/New Game.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>273</width>
-          <height>77</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonLeaderboard">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resource.qrc">
-          <normaloff>:/icons/images/Leaderboard.png</normaloff>:/icons/images/Leaderboard.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>273</width>
-          <height>77</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonExit">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resource.qrc">
-          <normaloff>:/icons/images/Exit.png</normaloff>:/icons/images/Exit.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>273</width>
-          <height>77</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="minimumSize">
-       <size>
-        <width>421</width>
-        <height>421</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>421</width>
-        <height>421</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resource.qrc">:/icons/images/mainmenu_0012_SudokuIcon.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>

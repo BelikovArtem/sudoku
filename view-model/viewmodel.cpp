@@ -59,9 +59,20 @@ void ViewModel::handleSignUp(QString username, QString password) {
     }
 }
 
-void ViewModel::handleCellClicked(QPushButton *cell)
+void ViewModel::handleCellClicked(QPushButton *cell, int row, int col)
 {
-    qDebug() << "Cell was pressed";
+    cellInFocus = cell;
+    Cell::Position pos { row, col };
+    game.setFocus(pos);
+}
+
+void ViewModel::handleNumberEntered(int number)
+{
+    game.openCell(number);
+
+    game.checkWin();
+
+    emit redrawCell(cellInFocus, number);
 }
 
 void ViewModel::handleNewGame(int difficultyLevel)
@@ -99,6 +110,8 @@ void ViewModel::handleNewGame(int difficultyLevel)
         QList<Cell> grid;
         grid = gridFromString(strGrid);
 
+        game.setGrid(grid);
+        game.startGame();
     }
     emit newGameStarted(difficultyLevel);
 }
@@ -178,8 +191,8 @@ void ViewModel::socketReadyRead()
         else if (obj["source"] == "select grid") {
             QList<Cell> grid = gridFromString(obj["queryResult"].toString());
 
-
-
+            game.setGrid(grid);
+            game.startGame();
         }
         else {
             emit warningUnknownJSON();
@@ -214,7 +227,8 @@ QList<Cell> ViewModel::gridFromString(QString strGrid)
         nextCharFromString = strGrid.at(0).toLatin1();
 
         // skip whitespaces and new lines
-        if (nextCharFromString == ' ' || nextCharFromString == '\n') {
+        if (nextCharFromString == ' ' || nextCharFromString == '\n' ||
+             nextCharFromString == '\r') {
             strGrid.removeAt(0);
             continue;
         }
@@ -242,7 +256,6 @@ QList<Cell> ViewModel::gridFromString(QString strGrid)
             row++;
             col = 0;
         }
-
     }
     return grid;
 }

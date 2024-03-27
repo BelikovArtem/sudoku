@@ -7,30 +7,49 @@ void Game::checkWin()
 {
     if (openedCellsCount == CELLS_COUNT) {
         gameState = GameState::Win;
+        endGame(gameState);
     }
 }
 
-void Game::openCell(Cell::Position pos)
+void Game::setFocus(Cell::Position pos)
 {
-    lastOpenedCell = grid.at(pos.i * pos.j);
-    lastOpenedCell->setOpenStatus(true);
-    openedCellsCount++;
+    if (gameState == GameState::Continues) {
+        cellInFocus = grid.at(pos.i * 9 + pos.j);
+    }
 }
 
-void Game::clearCell(Cell::Position pos)
+void Game::openCell(int number)
 {
-    grid.at(pos.i * pos.j)->setOpenStatus(false);
+    if (gameState == GameState::Continues) {
+        cellInFocus->setNumber(number);
+        if (cellInFocus->getNumber() == number) {
+            cellInFocus->setOpenStatus(true);
+            openedCellsCount++;
+        }
+    }
 }
 
-void Game::endGame()
+void Game::clearCell()
+{
+    cellInFocus->setOpenStatus(false);
+}
+
+void Game::startGame()
+{
+    timer->start(1);
+    gameState = GameState::Continues;
+}
+
+void Game::endGame(GameState state)
 {
     timer->stop();
+    gameState = state;
 }
 
 void Game::undo()
 {
-    if (lastOpenedCell) {
-        lastOpenedCell->setOpenStatus(false);
+    if (cellInFocus) {
+        cellInFocus->setOpenStatus(false);
     }
 }
 
@@ -38,6 +57,12 @@ void Game::pauseGame()
 {
     timer->stop();
     gameState = GameState::Pause;
+}
+
+void Game::setGrid(QList<Cell> _grid)
+{
+    for (const auto &_ : _grid)
+        grid.append(new Cell(_));
 }
 
 /*

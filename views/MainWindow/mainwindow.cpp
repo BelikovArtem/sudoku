@@ -48,6 +48,8 @@ void MainWindow::showGameWindow(int difficultyLevel)
 {
     GameWindow *gameWindow = new GameWindow(this);
     connect(gameWindow, &GameWindow::cellClicked, &viewmodel, &ViewModel::handleCellClicked);
+    connect(gameWindow, &GameWindow::numberEntered, &viewmodel, &ViewModel::handleNumberEntered);
+    connect(&viewmodel, &ViewModel::redrawCell, gameWindow, &GameWindow::handleRedrawCell);
     gameWindow->setModal(true);
     gameWindow->show();
 }

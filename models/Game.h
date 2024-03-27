@@ -19,7 +19,7 @@ public:
         Cell *lastOpenedCell = nullptr;
         openedCellsCount = 0;
         scores = 0;
-        QTimer *timer = nullptr;
+        timer = new QTimer();
         time = 0;
     }
 
@@ -27,10 +27,9 @@ public:
     {
         level =_level;
 
-        for (const auto &_ : _grid)
-            grid.append(new Cell(_));
+        setGrid(_grid);
 
-        timer = new QTimer(nullptr);
+        timer = new QTimer();
         connect(timer, &QTimer::timeout, this, &Game::timerSlot);
     }
 
@@ -49,11 +48,14 @@ public:
      * PUBLIC METHODS
      */
     void checkWin();
-    void openCell(Cell::Position pos);
-    void clearCell(Cell::Position pos);
-    void endGame();
+    void setFocus(Cell::Position pos);
+    void openCell(int number);
+    void clearCell();
+    void startGame();
+    void endGame(GameState state);
     void undo();
     void pauseGame();
+    void setGrid(QList<Cell> _grid);
 
     /*
      * PUBLIC FIELDS
@@ -64,7 +66,7 @@ private:
     QList<Cell*> grid;
     GameState gameState;
     DifficultyLevel level;
-    Cell *lastOpenedCell;
+    Cell *cellInFocus;
     int openedCellsCount;
     int scores;
     QTimer *timer;

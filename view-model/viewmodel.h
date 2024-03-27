@@ -26,8 +26,9 @@ public slots:
     void socketDisconnected();
     void handleLogIn(QString username, QString password);
     void handleSignUp(QString username, QString password);
-    void handleCellClicked(QPushButton *cell);
+    void handleCellClicked(QPushButton *cell, int row, int col);
     void handleNewGame(int difficultyLevel);
+    void handleNumberEntered(int number);
 
 private:
     /*
@@ -43,6 +44,7 @@ private:
      */
     User user;
     Game game;
+    QPushButton *cellInFocus;
 
     /*
      * PRIVATE METHODS
@@ -60,6 +62,7 @@ signals:
     void warningJSONParseError();
     void errorServerDisconnected();
     void newGameStarted(int difficultyLevel);   // 1 - low, 2 - medium, 3 - high
+    void redrawCell(QPushButton *cell, int number);
 };
 
 #endif // VIEWMODEL_H

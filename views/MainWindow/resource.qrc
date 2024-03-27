@@ -43,6 +43,16 @@
         <file>images/Settings_0005_Settings.png</file>
         <file>images/mainmenu_0002_1827112.png</file>
         <file>images/SudokuGenius.png</file>
+        <file>images/cell1.png</file>
+        <file>images/cell2.png</file>
+        <file>images/cell3.png</file>
+        <file>images/cell4.png</file>
+        <file>images/cell5.png</file>
+        <file>images/cell6.png</file>
+        <file>images/cell7.png</file>
+        <file>images/cell8.png</file>
+        <file>images/cell9.png</file>
+        <file>images/rectangle.png</file>
     </qresource>
     <qresource prefix="/example">
         <file>map.txt</file>
