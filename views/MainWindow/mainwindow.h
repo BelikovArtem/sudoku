@@ -27,7 +27,7 @@ public slots:
     void handleUnknownJSON();
     void handleJSONParseError();
     void handleServerDisconnected();
-    void showGameWindow(int difficultyLevel);
+    void handleShowGameWindow(int difficultyLevel);
 
 private slots:
     void on_pushButtonNewGame_clicked();

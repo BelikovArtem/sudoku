@@ -52,7 +52,7 @@
         <file>images/cell7.png</file>
         <file>images/cell8.png</file>
         <file>images/cell9.png</file>
-        <file>images/rectangle.png</file>
+        <file>images/cell0.png</file>
     </qresource>
     <qresource prefix="/example">
         <file>map.txt</file>

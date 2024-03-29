@@ -1,6 +1,7 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
+#include <QVector>
 #include <QDialog>
 #include <QGridLayout>
 
@@ -17,10 +18,10 @@ public:
     ~GameWindow();
 
 public slots:
-    void handleRedrawCell(QPushButton* cell, int number);
+    void handleRedrawCell(int index, int number);
 
 signals:
-    void cellClicked(QPushButton *cell, int i, int j);
+    void cellClicked(int row, int col);
     void numberEntered(int number);
 
 private slots:
@@ -44,12 +45,12 @@ private slots:
 
 private:
     Ui::GameWindow *ui;
-    QList<QPushButton*> listOfCells;
+    QVector<QPushButton*> listOfCells;
 
     /*
      * PRIVATE METHODS
      */
-    void addCellsFromGridToList(QGridLayout *grid);
+    void addCellsFromGridToList(QGridLayout *grid, int row_offset, int col_offset);
     void connectCellsInList();
 };
 

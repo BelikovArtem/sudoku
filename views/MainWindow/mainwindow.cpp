@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&viewmodel, &ViewModel::warningUnknownJSON, this, &MainWindow::handleUnknownJSON);
     connect(&viewmodel, &ViewModel::warningJSONParseError, this, &MainWindow::handleJSONParseError);
     connect(&viewmodel, &ViewModel::errorServerDisconnected, this, &MainWindow::handleServerDisconnected);
-    connect(&viewmodel, &ViewModel::newGameStarted, this, &MainWindow::showGameWindow);
+    //connect(this, &MainWindow::)
 }
 
 MainWindow::~MainWindow()
@@ -44,8 +44,11 @@ void MainWindow::handleServerDisconnected()
     QMessageBox::critical(this, "Error", "Server isn`t connected");
 }
 
-void MainWindow::showGameWindow(int difficultyLevel)
+void MainWindow::handleShowGameWindow(int difficultyLevel)
 {
+    // handleNewGame slot gets grid from the server and draw it on the game window
+    // emit
+
     GameWindow *gameWindow = new GameWindow(this);
     connect(gameWindow, &GameWindow::cellClicked, &viewmodel, &ViewModel::handleCellClicked);
     connect(gameWindow, &GameWindow::numberEntered, &viewmodel, &ViewModel::handleNumberEntered);
@@ -60,6 +63,7 @@ void MainWindow::showGameWindow(int difficultyLevel)
 void MainWindow::on_pushButtonNewGame_clicked()
 {
     DifficultyLevelDialog *difficultylevelDialog = new DifficultyLevelDialog(this);
+    connect(difficultylevelDialog, &DifficultyLevelDialog::newGame, this, &MainWindow::handleShowGameWindow);
     connect(difficultylevelDialog, &DifficultyLevelDialog::newGame, &viewmodel, &ViewModel::handleNewGame);
 
     difficultylevelDialog->setModal(true);

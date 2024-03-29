@@ -4,6 +4,7 @@
 GameWindow::GameWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::GameWindow)
+    , listOfCells(81)
 {
     ui->setupUi(this);
 
@@ -14,15 +15,15 @@ GameWindow::GameWindow(QWidget *parent)
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
-    addCellsFromGridToList(ui->grid1_9);
-    addCellsFromGridToList(ui->grid10_18);
-    addCellsFromGridToList(ui->grid19_27);
-    addCellsFromGridToList(ui->grid28_36);
-    addCellsFromGridToList(ui->grid37_45);
-    addCellsFromGridToList(ui->grid46_54);
-    addCellsFromGridToList(ui->grid55_63);
-    addCellsFromGridToList(ui->grid64_72);
-    addCellsFromGridToList(ui->grid73_81);
+    addCellsFromGridToList(ui->grid1_9,   0, 0);
+    addCellsFromGridToList(ui->grid10_18, 3, 0);
+    addCellsFromGridToList(ui->grid19_27, 6, 0);
+    addCellsFromGridToList(ui->grid28_36, 0, 27 );
+    addCellsFromGridToList(ui->grid37_45, 3, 27);
+    addCellsFromGridToList(ui->grid46_54, 6, 27);
+    addCellsFromGridToList(ui->grid55_63, 0, 54);
+    addCellsFromGridToList(ui->grid64_72, 3, 54);
+    addCellsFromGridToList(ui->grid73_81, 6, 54);
 
     connectCellsInList();
 }
@@ -35,30 +36,27 @@ GameWindow::~GameWindow()
 /*
  * PUBLIC SLOTS
  */
-void GameWindow::handleRedrawCell(QPushButton* cell, int number)
+void GameWindow::handleRedrawCell(int index, int number)
 {
-    switch (number) {
-    case 0:
-        cell->setIcon(QPixmap(":/icons/images/rectangle.png"));
-        break;
-    default:
-        cell->setIcon(QPixmap(":/icons/images/cell" + QString::number(number) + ".png"));
-        break;
-    }
+    listOfCells.at(index)->setIcon(QPixmap(":/icons/images/cell" + QString::number(number) + ".png"));
 }
 
 /*
  * PRIVATE METHODS
  */
-void GameWindow::addCellsFromGridToList(QGridLayout *grid)
+void GameWindow::addCellsFromGridToList(QGridLayout *grid, int row_offset, int col_offset)
 {
-    for (int i = 0; i < grid->count(); i++) {
-        auto cell = qobject_cast<QPushButton*>(grid->itemAt(i)->widget());
-        if (cell) {
-            listOfCells.append(cell);
-        } else {
-            qDebug() << "Cell is nullptr after qobject_cast";
+    int row = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            auto cell = qobject_cast<QPushButton*>(grid->itemAtPosition(i, j)->widget());
+            if (cell) {
+                listOfCells[i * 3 + j + row_offset + col_offset + row] = cell;
+            } else {
+                qDebug() << "Cell is nullptr after qobject_cast";
+            }
         }
+        row += 6;
     }
 }
 
@@ -67,8 +65,8 @@ void GameWindow::connectCellsInList()
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
             const auto &_ = listOfCells.at(row * 9 + col);
-            connect(_, &QPushButton::clicked, this, [this, _, row, col] {
-                emit cellClicked(_, row, col);
+            connect(_, &QPushButton::clicked, this, [this, row, col] {
+                emit cellClicked(row, col);
             });
         }
     }

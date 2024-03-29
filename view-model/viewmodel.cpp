@@ -59,11 +59,10 @@ void ViewModel::handleSignUp(QString username, QString password) {
     }
 }
 
-void ViewModel::handleCellClicked(QPushButton *cell, int row, int col)
+void ViewModel::handleCellClicked(int row, int col)
 {
-    cellInFocus = cell;
-    Cell::Position pos { row, col };
-    game.setFocus(pos);
+    cellInFocusPos = { row, col };
+    game.setFocus(cellInFocusPos);
 }
 
 void ViewModel::handleNumberEntered(int number)
@@ -72,7 +71,7 @@ void ViewModel::handleNumberEntered(int number)
 
     game.checkWin();
 
-    emit redrawCell(cellInFocus, number);
+    emit redrawCell(cellInFocusPos.i * 9 + cellInFocusPos.j, number);
 }
 
 void ViewModel::handleNewGame(int difficultyLevel)
@@ -112,8 +111,12 @@ void ViewModel::handleNewGame(int difficultyLevel)
 
         game.setGrid(grid);
         game.startGame();
+
+        for (const auto &_ : grid) {
+            int index = _.getPosition().i * 9 + _.getPosition().j;
+            emit redrawCell(index, _.getOpenStatus() ? _.getNumber() : 0);
+        }
     }
-    emit newGameStarted(difficultyLevel);
 }
 
 void ViewModel::socketReadyRead()
@@ -193,6 +196,12 @@ void ViewModel::socketReadyRead()
 
             game.setGrid(grid);
             game.startGame();
+
+            // draw grid on gamewindow view
+            for (const auto &_ : grid) {
+                int index = _.getPosition().i * 9 + _.getPosition().j;
+                emit redrawCell(index, _.getOpenStatus() ? _.getNumber() : 0);
+            }
         }
         else {
             emit warningUnknownJSON();
