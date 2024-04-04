@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 
 Item {
@@ -59,31 +59,25 @@ Item {
         }
     }
 
-    Button {
+    CustomButton {
         id: confirmButton
         width: 280
-        height: 150
+        height: 90
 
         anchors {
-            top: comboBox.top
-            topMargin: 300
+            //top: comboBox.top
+            //topMargin: 200
             left: parent.left
             leftMargin: 200
             bottom: parent.bottom
             bottomMargin: 100
         }
 
-        Text {
-            text: "Confirm"
-            font.pixelSize: 40
-            font.family: "Copperplate Gothic Light"
-            color: "#18228f"
-            anchors.centerIn: parent
-        }
-
-        background: Rectangle {
-            color: "#4f72eb"
-        }
+        text: "Confirm"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        textColor: "#18228f"
+        backgroundColor: "#4f72eb"
 
         onClicked: {
             // setDifficutyLevel
@@ -105,31 +99,25 @@ Item {
         }
     }
 
-    Button {
+    CustomButton {
         id: cancelButton
         width: 280
-        height: 150
+        height: 90
 
         anchors {
-            top: comboBox.top
-            topMargin: 300
+            //top: comboBox.top
+            //topMargin: 200
             right: parent.right
             rightMargin: 200
             bottom: parent.bottom
             bottomMargin: 100
         }
 
-        Text {
-            text: "Cancel"
-            font.pixelSize: 40
-            font.family: "Copperplate Gothic Light"
-            color: "#18228f"
-            anchors.centerIn: parent
-        }
-
-        background: Rectangle {
-            color: "#4f72eb"
-        }
+        text: "Cancel"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        textColor: "#18228f"
+        backgroundColor: "#4f72eb"
 
         onClicked: {
             stackView.pop()

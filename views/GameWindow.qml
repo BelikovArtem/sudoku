@@ -1,13 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 
 Item {
     id: gameWindow
     visible: true
 
     Label {
-        id: sudokuGenuisLabel
+        id: sudokuGeniusLabel
         width: 300
         height: 70
         anchors.margins: 20
@@ -132,30 +132,40 @@ Item {
         Repeater {
             model: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-            Button {
+            CustomButton {
                 implicitWidth: 100
                 implicitHeight: 100
 
-                Text {
-                    text: modelData
-                    font.pixelSize: 70
-                    font.family: "Copperplate Gothic Light"
-                    color: "#18228f"
-                    anchors.centerIn: parent
-                }
+                text: modelData
+                fontSize: 70
+                fontFamily: "Copperplate Gothic Light"
+                textColor: "#18228f"
 
-                background: Rectangle {
-                    color: "#6dcff6"
-                }
+                backgroundColor: "#6dcff6"
             }
 
         }
     }
 
+    Frame {
+        padding: 6
 
-    // grid 1-9
-    // SudokuGrid {
+        background: Rectangle {
+            color: "transparent"
+            border.color: "#1875f5"
+            border.width: 5
+        }
 
-    // }
+        anchors {
+            top: sudokuGeniusLabel.bottom
+            topMargin: 60
+            left: parent.left
+            leftMargin: 20
+        }
+
+        SudokuGrid {
+            anchors.fill: parent
+        }
+    }
 
 }

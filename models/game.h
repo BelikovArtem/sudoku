@@ -27,7 +27,7 @@ public:
     /*
      * SETTERS
      */
-    void setGrid(QList<Cell> grid);
+    void setGrid(QString strGrid);
     void setGameState(QString state);
     void setDifficultyLevel(QString level);
 
@@ -39,7 +39,7 @@ public:
 
 signals:
     void timeChanged();
-    void gridChanged();
+    void gridChanged(int index);
     void scoreChanged();
     void mistakesChanged();
     void usernameChanged();

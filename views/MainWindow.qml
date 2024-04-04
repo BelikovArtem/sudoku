@@ -82,94 +82,64 @@ Item {
         }
     }
 
-    Button {
+    CustomButton {
         id: newGameButton
         width: 300
         height: 90
 
         anchors {
-            top: sudokuIcon.top
-            topMargin: 50
-            left: sudokuIcon.right
-            leftMargin: 90
+            top: settingsButton.bottom
+            topMargin: 80
             right: parent.right
-            rightMargin: 30
+            rightMargin: 50
         }
 
-        Text {
-            text: "New Game"
-            font.pixelSize: 40
-            font.family: "Copperplate Gothic Light"
-            color: "#18228f"
-            anchors.centerIn: parent
-        }
-
-        background: Rectangle {
-            color: "#4f72eb"
-        }
+        text: "New Game"
+        textColor: "#18228f"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        backgroundColor: "#4f72eb"
 
         onClicked: {
             stackView.push("DifficultyLevelWindow.qml")
         }
     }
 
-    Button {
+    CustomButton {
         id: leaderboardButton
         width: 300
         height: 90
 
         anchors {
             top: newGameButton.bottom
-            topMargin: 30
+            topMargin: 60
             right: parent.right
-            rightMargin: 30
+            rightMargin: 50
         }
 
-        Text {
-            text: "Leaderboard"
-            font.pixelSize: 40
-            font.family: "Copperplate Gothic Light"
-            color: "#18228f"
-            anchors.centerIn: parent
-        }
-
-        background: Rectangle {
-            color: "#4f72eb"
-        }
-
-        onClicked: {
-            //stackView.push("DifficultyLevelWindow.qml")
-        }
+        text: "Leaderboard"
+        textColor: "#18228f"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        backgroundColor: "#4f72eb"
     }
 
-    Button {
+    CustomButton {
         id: exitButton
         width: 300
         height: 90
 
         anchors {
             top: leaderboardButton.bottom
-            topMargin: 30
+            topMargin: 60
             right: parent.right
-            rightMargin: 30
-            bottom: sudokuIcon.bottom
-            bottomMargin: 50
+            rightMargin: 50
         }
 
-        Text {
-            text: "Exit"
-            font.pixelSize: 40
-            font.family: "Copperplate Gothic Light"
-            color: "#18228f"
-            anchors.centerIn: parent
-        }
-
-        background: Rectangle {
-            color: "#4f72eb"
-        }
-
-        onClicked: {
-            stackView.push("DifficultyLevelWindow.qml")
-        }
+        text: "Exit"
+        textColor: "#18228f"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        backgroundColor: "#4f72eb"
     }
 }
