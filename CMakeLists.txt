@@ -37,6 +37,10 @@ qt_add_qml_module(appsudoku
     SOURCES view-models/serverviewmodel.h view-models/serverviewmodel.cpp
     SOURCES models/user.h models/user.cpp
     QML_FILES views/LoginWindow.qml
+    QML_FILES views/SettingsWindow.qml
+    QML_FILES views/DataChangeWindow.qml
+    QML_FILES views/SudokuGeniusLabel.qml
+    QML_FILES views/CustomPopup.qml
 
 )
 

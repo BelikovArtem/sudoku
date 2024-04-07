@@ -12,6 +12,8 @@ class ServerViewModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int userId READ userId NOTIFY userIdChanged)
+    Q_PROPERTY(bool isConnected READ isConnected NOTIFY isConnectedChanged)
+    Q_PROPERTY(bool isAuthorized READ isAuthorized NOTIFY isAuthorizedChanged)
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QString userPassword READ userPassword WRITE setUserPassword NOTIFY userPasswordChanged)
 
@@ -22,6 +24,8 @@ public:
      * GETTERS
      */
     int userId() const { return m_user.user_id(); }
+    bool isConnected() const { return m_isConnected; }
+    bool isAuthorized() const { return m_isAuthorized; }
     QString userName() const { return m_user.user_name(); }
     QString userPassword() const { return m_user.user_password(); }
 
@@ -41,8 +45,9 @@ public:
 signals:
     void userIdChanged();
     void userNameChanged();
+    void isConnectedChanged();
+    void isAuthorizedChanged();
     void userPasswordChanged();
-    void authorizationComplete();
     void viewMessage(const QString& message);
     void gridFromServer(const QString& grid);
 
@@ -62,6 +67,9 @@ public slots:
 
 private:
     User m_user;
+    bool m_isConnected;
+    bool m_isAuthorized;
+
     QTcpSocket *socket;
     QByteArray importData;
     QByteArray exportData;

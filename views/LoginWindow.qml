@@ -7,29 +7,8 @@ Item {
     id: loginWindow
     visible: true
 
-    Label {
+    SudokuGeniusLabel {
         id: sudokuGeniusLabel
-        width: 300
-        height: 70
-        anchors.margins: 20
-        anchors.top: parent.top
-        anchors.left: parent.left
-
-        Text {
-            id: sudokuText
-            text: "Sudoku"
-            font.family: "Eras Bold ITC"
-            color: "#2d3bbb"
-            font.pixelSize: 46
-        }
-
-        Text {
-            anchors.left: sudokuText.right
-            text: "Genius"
-            font.family: "Script MT Bold"
-            color: "#1773ef"
-            font.pixelSize: 46
-        }
     }
 
     Rectangle {
@@ -97,6 +76,7 @@ Item {
     }
 
     RowLayout {
+        id: rowLayoutButtons
         anchors {
             top: passwordRect.bottom
             topMargin: 100
@@ -147,6 +127,28 @@ Item {
                 sViewModel.logIn(usernameInput.text, passwordInput.text)
             }
         }
+
     }
 
+    CustomButton {
+        id: exitButton
+        width: 250
+        height: 50
+
+        anchors {
+            top: rowLayoutButtons.bottom
+            topMargin: 50
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        text: "Exit"
+        textColor: "#18228f"
+        fontSize: 40
+        fontFamily: "Copperplate Gothic Light"
+        backgroundColor: "#4f72eb"
+
+        onClicked: {
+            stackView.pop()
+        }
+    }
 }

@@ -13,6 +13,10 @@ ServerViewModel::ServerViewModel(QObject *parent)
     connect(socket, &QTcpSocket::readyRead, this, &ServerViewModel::socketReadyRead);
     connect(socket, &QTcpSocket::disconnected, this, &ServerViewModel::socketDisconnected);
     socket->connectToHost("127.0.0.1", 5555);
+
+    // by default, client isn`t connected to the server
+    m_isConnected = false;
+    m_isAuthorized = false;
 }
 
 /*
@@ -20,12 +24,48 @@ ServerViewModel::ServerViewModel(QObject *parent)
  */
 void ServerViewModel::setUserName(const QString &userName)
 {
-    m_user.setUserName(userName);
+    if (m_isConnected) {
+        /*
+        * {
+        *     "type": "update user_name",
+        *     "oldUsername": "user_name"
+        *     "newUsername": "user_name"
+        * }
+        */
+        QJsonObject request;
+        request["type"] = "update user_name";
+        request["oldUsername"] = m_user.user_name();
+        request["newUsername"] = userName;
+
+        sendRequestToServer(request);
+
+        m_user.setUserName(userName);
+    } else {
+        emit viewMessage("Server isn`t connected");
+    }
 }
 
 void ServerViewModel::setUserPassword(const QString &userPassword)
 {
-    m_user.setUserPassword(userPassword);
+    if (m_isConnected) {
+        /*
+        * {
+        *     "type": "update user_password",
+        *     "oldPassword": "user_password"
+        *     "newPassword": "user_password"
+        * }
+        */
+        QJsonObject request;
+        request["type"] = "update user_password";
+        request["oldPassword"] = m_user.user_password();
+        request["newPassword"] = userPassword;
+
+        sendRequestToServer(request);
+
+        m_user.setUserPassword(userPassword);
+    } else {
+        emit viewMessage("Server isn`t connected");
+    }
 }
 
 /*
@@ -33,7 +73,7 @@ void ServerViewModel::setUserPassword(const QString &userPassword)
  */
 void ServerViewModel::getRandomGridFromServer(QString difficultyLevel)
 {
-    if (socket->state() == QTcpSocket::ConnectedState) {
+    if (m_isConnected) {
         /*
         * {
         *     "type": "select grid",
@@ -62,7 +102,7 @@ void ServerViewModel::getRandomGridFromServer(QString difficultyLevel)
 
 void ServerViewModel::logIn(QString username, QString password)
 {
-    if (socket->state() == QTcpSocket::ConnectedState) {
+    if (m_isConnected) {
         /*
         * {
         *     "type": "select user",
@@ -83,7 +123,7 @@ void ServerViewModel::logIn(QString username, QString password)
 
 void ServerViewModel::signUp(QString username, QString password)
 {
-    if (socket->state() == QTcpSocket::ConnectedState) {
+    if (m_isConnected) {
         /*
         * {
         *     "type": "insert user",
@@ -144,7 +184,8 @@ void ServerViewModel::socketReadyRead()
         */
         if (obj["status"] == "connected" &&
             obj["descriptor"].toInt() > 0) {
-            //emit viewMessage("Connected to the server succesfully");
+            m_isConnected = true;
+            emit isConnectedChanged();
         }
         /*
         * {
@@ -189,6 +230,24 @@ void ServerViewModel::socketReadyRead()
 
             emit gridFromServer(queryResult);
         }
+        /*
+        * {
+        *     "source": "update user_name",
+        *     "queryResult": "Success" | "Username already exists"
+        * }
+        */
+        else if (obj["source"] == "update user_name") {
+            emit viewMessage(obj["queryResult"].toString());
+        }
+        /*
+        * {
+        *     "source": "update user_password",
+        *     "queryResult": "Success" | "Old password entered"
+        * }
+        */
+        else if (obj["source"] == "update user_password") {
+            emit viewMessage(obj["queryResult"].toString());
+        }
         else {
             emit viewMessage("Unknown JSON from server");
         }
@@ -197,6 +256,8 @@ void ServerViewModel::socketReadyRead()
 
 void ServerViewModel::socketDisconnected()
 {
+    m_isConnected = false;
+    emit isConnectedChanged();
     socket->deleteLater();
 }
 
@@ -210,8 +271,9 @@ void ServerViewModel::fillUserData(const QJsonObject &userObject)
     m_user.setUserName(userObject["user_name"].toString());
     m_user.setUserPassword(userObject["user_password"].toString());
 
-    // notify view about successfull authorization
-    emit authorizationComplete();
+    // notify view about successful authorization
+    m_isAuthorized = true;
+    emit isAuthorizedChanged();
     emit viewMessage("Authorization completed");
 }
 

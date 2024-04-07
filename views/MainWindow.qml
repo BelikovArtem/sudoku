@@ -5,29 +5,8 @@ Item {
     id: mainWindow
     visible: true
 
-    Label {
-        id: sudokuGenuisLabel
-        width: 300
-        height: 70
-        anchors.margins: 20
-        anchors.top: parent.top
-        anchors.left: parent.left
-
-        Text {
-            id: sudokuText
-            text: "Sudoku"
-            font.family: "Eras Bold ITC"
-            color: "#2d3bbb"
-            font.pixelSize: 46
-        }
-
-        Text {
-            anchors.left: sudokuText.right
-            text: "Genius"
-            font.family: "Script MT Bold"
-            color: "#1773ef"
-            font.pixelSize: 46
-        }
+    SudokuGeniusLabel {
+        id: sudokuGeniusLabel
     }
 
     RoundButton {
@@ -64,6 +43,10 @@ Item {
         icon.height: parent.height
         icon.source: "images/settings.png"
         flat: true
+
+        onClicked: {
+            stackView.push("SettingsWindow.qml");
+        }
     }
 
     Label {
@@ -76,7 +59,7 @@ Item {
             leftMargin: 40
             bottom: parent.bottom
             bottomMargin: 25
-            top: sudokuGenuisLabel.bottom
+            top: sudokuGeniusLabel.bottom
             topMargin: 80
         }
 
