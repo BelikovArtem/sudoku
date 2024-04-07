@@ -80,7 +80,6 @@ Item {
         backgroundColor: "#4f72eb"
 
         onClicked: {
-            // setDifficutyLevel
             switch (comboBox.currentIndex) {
             case 0:
                 cViewModel.difficultyLevel = "Low"
@@ -94,8 +93,7 @@ Item {
             }
 
             // start new game
-            cViewModel.startNewGame()
-            stackView.push("GameWindow.qml")
+            sViewModel.getRandomGridFromServer(cViewModel.difficultyLevel)
         }
     }
 

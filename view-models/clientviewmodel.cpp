@@ -28,20 +28,10 @@ void ClientViewModel::setDifficultyLevel(const QString &difficultyLevel)
 /*
  * AVAILIBLE FROM UI
  */
-void ClientViewModel::startNewGame()
+void ClientViewModel::startNewGame(const QString &grid)
 {
-    m_game.startGame();
-
-    QString grid = "4x 9x 7 5 8 6 2 3 1\r\n"
-                   "8 3x 1x 9 2 7 5 4x 6x\r\n"
-                   "5x 6 2x 3 1x 4x 9 8x 7x\r\n"
-                   "9x 7 5 4 6 1 8 2 3\r\n"
-                   "1x 8 6 2 3x 5 4 7 9\r\n"
-                   "3 2 4 8 7 9x 6x 1 5x\r\n"
-                   "7x 4x 3x 6 5 2 1 9 8\r\n"
-                   "2x 5x 8x 1 9 3x 7 6x 4\r\n"
-                   "6 1x 9 7 4x 8x 3x 5x 2x ";
     m_game.setGrid(grid);
+    m_game.startGame();
 }
 
 /*

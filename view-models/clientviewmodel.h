@@ -32,13 +32,14 @@ public:
     /*
      * SETTERS
      */
+    void setGrid(const QString &grid);
     void setGameState(const QString &gameState);
     void setDifficultyLevel(const QString &difficultyLevel);
 
     /*
      * AVAILIBLE FROM UI
      */
-    Q_INVOKABLE void startNewGame();
+    Q_INVOKABLE void startNewGame(const QString &grid);
 
 signals:
     void gridChanged();

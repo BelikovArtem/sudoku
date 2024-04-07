@@ -44,6 +44,10 @@ Item {
         icon.height: parent.height
         icon.source: "images/profile.png"
         flat: true
+
+        onClicked: {
+            stackView.push("LoginWindow.qml")
+        }
     }
 
     RoundButton {

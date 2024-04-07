@@ -1,4 +1,5 @@
 #include "view-models/clientviewmodel.h"
+#include "view-models/serverviewmodel.h"
 
 #include <QQmlContext>
 #include <QGuiApplication>
@@ -18,9 +19,13 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
 
-    // data binding with view-model
+    // data binding with client view-model
     ClientViewModel cViewModel;
     engine.rootContext()->setContextProperty("cViewModel", &cViewModel);
+
+    // data binding with server view-model
+    ServerViewModel sViewModel;
+    engine.rootContext()->setContextProperty("sViewModel", &sViewModel);
 
     engine.load(url);
 

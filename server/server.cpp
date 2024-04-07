@@ -73,7 +73,7 @@ void server::socketReadyRead()
             /*
              * {
              *     "source": "insert user",
-             *     "queryResult": "success" | "username already exist",
+             *     "queryResult": "success" | "Username already exist",
              *     "user": {
              *         "user_id": id
              *         "user_name": user_name",
@@ -83,7 +83,7 @@ void server::socketReadyRead()
              */
             QJsonObject responce;
             responce["source"] = "insert user";
-            responce["queryResult"] = queryComplete ? "success" : "username already exists";
+            responce["queryResult"] = queryComplete ? "success" : "Username already exists";
             responce["user"] = user;
 
             sendResponceToClient(responce);
@@ -107,7 +107,7 @@ void server::socketReadyRead()
             if (query.exec(strQuery)) {
                 QJsonObject user;
 
-                while(query.next()) {
+                while (query.next()) {
                     user["user_id"] = query.value(0).toInt();
                     user["user_name"] = query.value(1).toString();
                     user["user_password"] = query.value(2).toString();
@@ -116,7 +116,7 @@ void server::socketReadyRead()
                 /*
                  * {
                  *     "source": "select user",
-                 *     "queryResult": "success" | "incorrect password" | "username not found",
+                 *     "queryResult": "success" | "Incorrect password" | "Username not found",
                  *     "user": {
                  *         "user_id": id,
                  *         "user_name": "name",
@@ -127,11 +127,11 @@ void server::socketReadyRead()
                 QJsonObject responce;
                 responce["source"] = "select user";
                 if (user.isEmpty())
-                    responce["queryResult"] = "username not found";
+                    responce["queryResult"] = "Username not found";
                 else if (user["user_password"] == user_password)
                     responce["queryResult"] = "success";
                 else
-                    responce["queryResult"] = "incorrect password";
+                    responce["queryResult"] = "Incorrect password";
                 responce["user"] = user;
 
                 sendResponceToClient(responce);
@@ -140,7 +140,7 @@ void server::socketReadyRead()
         /*
         * {
         *     "type": "select grid",
-        *     "difficultyLevel": "low" | "medium" | "high"
+        *     "difficultyLevel": "Low" | "Medium" | "High"
         * }
         */
         else if (obj["type"] == "select grid") {
@@ -149,7 +149,7 @@ void server::socketReadyRead()
             QSqlQuery query(dataBase);
 
             QString strQuery("SELECT grid FROM public.grids ");
-            strQuery.append("WHERE difficulty = '" + difficultyLevel + "' ");
+            strQuery.append("WHERE difficulty = '" + difficultyLevel.toLower() + "' ");
             strQuery.append(" ORDER BY RANDOM() ");
             strQuery.append("LIMIT 1");
 
@@ -162,6 +162,7 @@ void server::socketReadyRead()
                 */
                 QJsonObject responce;
                 responce["source"] = "select grid";
+
                 while (query.next()) {
                     responce["queryResult"] = query.value(0).toString();
                 }

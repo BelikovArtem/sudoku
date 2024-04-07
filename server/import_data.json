@@ -203,3 +203,138 @@
     "type": "select grid"
 }
 
+{
+    "type": "select user",
+    "user_name": "qwe",
+    "user_password": "qwe"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "qwe"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "qweqwe"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "zxc"
+}
+
+{
+    "type": "select user",
+    "user_name": "asd",
+    "user_password": "dsa"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "www"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "zxc"
+}
+
+{
+    "type": "select user",
+    "user_name": "qweqwe",
+    "user_password": "www"
+}
+
+{
+    "type": "select user",
+    "user_name": "Username",
+    "user_password": "Password"
+}
+
+{
+    "type": "select user",
+    "user_name": "SDA2",
+    "user_password": "Password"
+}
+
+{
+    "type": "select user",
+    "user_name": "sda2",
+    "user_password": "Password"
+}
+
+{
+    "type": "select user",
+    "user_name": "sda2",
+    "user_password": "asd"
+}
+
+{
+    "type": "insert user",
+    "user_name": "abc",
+    "user_password": "Password"
+}
+
+{
+    "type": "insert user",
+    "user_name": "admin",
+    "user_password": "admin"
+}
+
+{
+    "type": "select user",
+    "user_name": "admin",
+    "user_password": "admin"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Medium",
+    "type": "select grid"
+}
+
+{
+    "difficultyLevel": "Low",
+    "type": "select grid"
+}
+

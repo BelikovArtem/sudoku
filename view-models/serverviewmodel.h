@@ -1,0 +1,78 @@
+#ifndef SERVERVIEWMODEL_H
+#define SERVERVIEWMODEL_H
+
+#include <QObject>
+#include <QTcpSocket>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include "../models/user.h"
+
+class ServerViewModel : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(int userId READ userId NOTIFY userIdChanged)
+    Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
+    Q_PROPERTY(QString userPassword READ userPassword WRITE setUserPassword NOTIFY userPasswordChanged)
+
+public:
+    explicit ServerViewModel(QObject *parent = nullptr);
+
+    /*
+     * GETTERS
+     */
+    int userId() const { return m_user.user_id(); }
+    QString userName() const { return m_user.user_name(); }
+    QString userPassword() const { return m_user.user_password(); }
+
+    /*
+     * SETTERS
+     */
+    void setUserName(const QString &userName);
+    void setUserPassword(const QString &userPassword);
+
+    /*
+     * AVAILIBLE FROM UI
+     */
+    Q_INVOKABLE void logIn(QString username, QString password);
+    Q_INVOKABLE void signUp(QString username, QString password);
+    Q_INVOKABLE void getRandomGridFromServer(QString difficultyLevel);
+
+signals:
+    void userIdChanged();
+    void userNameChanged();
+    void userPasswordChanged();
+    void authorizationComplete();
+    void viewMessage(const QString& message);
+    void gridFromServer(const QString& grid);
+
+public slots:
+    /*
+     * FROM MODEL
+     */
+    void onUserIdChanged();
+    void onUserNameChanged();
+    void onUserPasswordChanged();
+
+    /*
+     * FROM SERVER
+     */
+    void socketReadyRead();
+    void socketDisconnected();
+
+private:
+    User m_user;
+    QTcpSocket *socket;
+    QByteArray importData;
+    QByteArray exportData;
+    QJsonDocument document;
+    QJsonParseError documentError;
+
+    /*
+     * PRIVATE METHODS
+     */
+    void fillUserData(const QJsonObject &userObject);
+    void sendRequestToServer(const QJsonObject &request);
+};
+
+#endif // SERVERVIEWMODEL_H

@@ -34,6 +34,9 @@ qt_add_qml_module(appsudoku
     QML_FILES
     QML_FILES views/images/CustomButton.qml
     QML_FILES views/CustomButton.qml
+    SOURCES view-models/serverviewmodel.h view-models/serverviewmodel.cpp
+    SOURCES models/user.h models/user.cpp
+    QML_FILES views/LoginWindow.qml
 
 )
 

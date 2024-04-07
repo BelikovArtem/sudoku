@@ -412,3 +412,545 @@
 }
 
 
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1016,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1040,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1040,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 992,
+    "status": "connected"
+}
+
+{
+    "descriptor": 992,
+    "status": "connected"
+}
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1044,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1056,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1056,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1044,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1064,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1068,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1068,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1080,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1080,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1084,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1084,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1084,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1092,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1080,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1068,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 984,
+    "status": "connected"
+}
+
+{
+    "descriptor": 812,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 984,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1072,
+    "status": "connected"
+}
+
+{
+    "descriptor": 812,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "descriptor": 608,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1016,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1088,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1016,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1088,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1076,
+    "status": "connected"
+}
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "queryResult": "username not found",
+    "source": "select user",
+    "user": {
+    }
+}
+
+
+{
+    "queryResult": "incorrect password",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "queryResult": "incorrect password",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "queryResult": "incorrect password",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "queryResult": "username not found",
+    "source": "select user",
+    "user": {
+    }
+}
+
+
+{
+    "queryResult": "success",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "queryResult": "incorrect password",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "queryResult": "success",
+    "source": "select user",
+    "user": {
+        "user_id": 9,
+        "user_name": "qweqwe",
+        "user_password": "www"
+    }
+}
+
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "queryResult": "username not found",
+    "source": "select user",
+    "user": {
+    }
+}
+
+
+{
+    "queryResult": "username not found",
+    "source": "select user",
+    "user": {
+    }
+}
+
+
+{
+    "queryResult": "incorrect password",
+    "source": "select user",
+    "user": {
+        "user_id": 18,
+        "user_name": "sda2",
+        "user_password": "asd"
+    }
+}
+
+
+{
+    "queryResult": "success",
+    "source": "select user",
+    "user": {
+        "user_id": 18,
+        "user_name": "sda2",
+        "user_password": "asd"
+    }
+}
+
+
+{
+    "queryResult": "username already exists",
+    "source": "insert user",
+    "user": {
+    }
+}
+
+
+{
+    "queryResult": "success",
+    "source": "insert user",
+    "user": {
+        "user_id": 20,
+        "user_name": "admin",
+        "user_password": "admin"
+    }
+}
+
+
+{
+    "descriptor": 1012,
+    "status": "connected"
+}
+
+{
+    "queryResult": "success",
+    "source": "select user",
+    "user": {
+        "user_id": 20,
+        "user_name": "admin",
+        "user_password": "admin"
+    }
+}
+
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 972,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 996,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 1020,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 1000,
+    "status": "connected"
+}
+
+{
+    "descriptor": 1000,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 988,
+    "status": "connected"
+}
+
+{
+    "descriptor": 992,
+    "status": "connected"
+}
+
+{
+    "descriptor": 996,
+    "status": "connected"
+}
+
+{
+    "queryResult": "",
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 1004,
+    "status": "connected"
+}
+
+{
+    "descriptor": 984,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 1004,
+    "status": "connected"
+}
+
+{
+    "descriptor": 988,
+    "status": "connected"
+}
+
+{
+    "queryResult": "1 5x 2x 4 8 9 3x 7x 6 7 3 9x 2x 5x 6x 8x 4 1x 4x 6x 8x 3x 7x 1 2 9 5 3x 8x 7 1 2 4x 6 5x 9x 5 9x 1x 7 6x 3 4x 2x 8 2x 4 6 8x 9 5 7 1 3x 9 1 4 6 3x 7x 5x 8x 2x 6x 2 5x 9x 4x 8x 1x 3 7 8 7x 3x 5 1 2 9x 6x 4 ",
+    "source": "select grid"
+}
+
+
+{
+    "descriptor": 996,
+    "status": "connected"
+}
+
+{
+    "source": "select grid"
+}
+
+
