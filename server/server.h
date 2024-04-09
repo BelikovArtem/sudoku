@@ -30,11 +30,13 @@ private:
     QJsonDocument doc;
     QJsonParseError docError;
 
+    const QString exportLogPath = "C:/C++ projects/qt/sudoku/server/export_data.json";
+    const QString importLogPath = "C:/C++ projects/qt/sudoku/server/import_data.json";
+
     /*
      * PRIVATE METHODS
      */
-    void logImport(QByteArray &data);
-    void logExport(QByteArray &data);
+    void log(QByteArray &data, const QString& logFilePath);
     void sendResponceToClient(const QJsonObject &responce);
 
 protected:

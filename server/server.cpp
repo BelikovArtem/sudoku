@@ -290,8 +290,8 @@ void server::socketReadyRead()
             qDebug() << "Unknown Json document from client";
         }
 
-        logImport(importData);
-        logExport(exportData);
+        log(importData, importLogPath);
+        log(exportData, exportLogPath);
 
     } else {
         qDebug() << "Parse error in Json from client " + docError.errorString();
@@ -331,23 +331,12 @@ void server::incomingConnection(qintptr socketDescriptor)
 /*
 * PRIVATE METHODS
 */
-void server::logImport(QByteArray &data)
+void server::log(QByteArray &data, const QString& logFilePath)
 {
-    data.append("\n");
-    QFile import_log("C:/C++ projects/qt/sudoku/server/import_data.json");
-    import_log.open(QIODevice::WriteOnly | QIODevice::Append);
-    import_log.write(data);
-    import_log.close();
-    data.clear();
-}
-
-void server::logExport(QByteArray &data)
-{
-    data.append("\n");
-    QFile export_log("C:/C++ projects/qt/sudoku/server/export_data.json");
-    export_log.open(QIODevice::WriteOnly | QIODevice::Append);
-    export_log.write(data);
-    export_log.close();
+    QFile log(logFilePath);
+    log.open(QIODevice::WriteOnly | QIODevice::Append);
+    log.write(data);
+    log.close();
     data.clear();
 }
 
@@ -356,6 +345,6 @@ void server::sendResponceToClient(const QJsonObject &responce)
     exportData = QJsonDocument(responce).toJson();
     socket->write(exportData);
     socket->waitForBytesWritten(1000);
-    logExport(exportData);
+    log(exportData, exportLogPath);
     exportData.clear();
 }
