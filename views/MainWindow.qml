@@ -25,7 +25,12 @@ Item {
         flat: true
 
         onClicked: {
-            stackView.push("LoginWindow.qml")
+            if (sViewModel.isConnected) {
+                stackView.push("LoginWindow.qml")
+            } else {
+                warningPopup.warningText = "Server isn`t connected"
+                warningPopup.open()
+            }
         }
     }
 
@@ -109,6 +114,16 @@ Item {
         fontSize: 40
         fontFamily: "Copperplate Gothic Light"
         backgroundColor: "#4f72eb"
+
+        onClicked: {
+            if (sViewModel.isConnected) {
+                stackView.push("LeaderboardWindow.qml")
+            } else {
+                warningPopup.warningText = "Server isn`t connected"
+                warningPopup.open()
+            }
+        }
+
     }
 
     CustomButton {
@@ -128,5 +143,14 @@ Item {
         fontSize: 40
         fontFamily: "Copperplate Gothic Light"
         backgroundColor: "#4f72eb"
+
+    }
+
+    CustomPopup {
+        id: warningPopup
+        x: parent.width - width - 20
+        y: parent.height - height - 20
+        width: 550
+        height: 50
     }
 }

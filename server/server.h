@@ -5,7 +5,7 @@
 #include <QSqlQuery>
 #include <QTcpSocket>
 #include <QTcpServer>
-#include <QThreadPool>
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QSqlDatabase>
 #include <QJsonDocument>

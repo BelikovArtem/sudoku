@@ -6,6 +6,7 @@ ServerViewModel::ServerViewModel(QObject *parent)
     // connect to user model signals
     connect(&m_user, &User::userIdChanged, this, &ServerViewModel::onUserIdChanged);
     connect(&m_user, &User::userNameChanged, this, &ServerViewModel::onUserNameChanged);
+    connect(&m_user, &User::userScoreChanged, this, &ServerViewModel::onUserScoreChanged);
     connect(&m_user, &User::userPasswordChanged, this, &ServerViewModel::onUserPasswordChanged);
 
     // connect to server
@@ -71,6 +72,25 @@ void ServerViewModel::setUserPassword(const QString &userPassword)
 /*
  * AVAILIBLE FROM UI
  */
+void ServerViewModel::getLeaderboard(int userCount)
+{
+    if (m_isConnected) {
+        /*
+        * {
+        *     "type": "select leaderboard",
+        *     "userCount": usersCount
+        * }
+        */
+        QJsonObject request;
+        request["type"] = "select leaderboard";
+        request["userCount"] = userCount;
+
+        sendRequestToServer(request);
+    } else {
+        emit viewMessage("Server isn`t connected");
+    }
+}
+
 void ServerViewModel::getRandomGridFromServer(QString difficultyLevel)
 {
     if (m_isConnected) {
@@ -154,6 +174,11 @@ void ServerViewModel::onUserIdChanged()
 void ServerViewModel::onUserNameChanged()
 {
     emit userNameChanged();
+}
+
+void ServerViewModel::onUserScoreChanged()
+{
+    emit userScoreChanged();
 }
 
 void ServerViewModel::onUserPasswordChanged()
@@ -248,6 +273,17 @@ void ServerViewModel::socketReadyRead()
         else if (obj["source"] == "update user_password") {
             emit viewMessage(obj["queryResult"].toString());
         }
+        /*
+        * {
+        *     "source": "select leaderboard",
+        *     "userCount": userCount,
+        *     "queryResult": users
+        * }
+        */
+        else if (obj["source"] == "select leaderboard") {
+            emit leaderboardRecievedFromServer(
+                obj["queryResult"].toArray().toVariantList());
+        }
         else {
             emit viewMessage("Unknown JSON from server");
         }
@@ -270,6 +306,7 @@ void ServerViewModel::fillUserData(const QJsonObject &userObject)
     m_user.setUserId(userObject["user_id"].toInt());
     m_user.setUserName(userObject["user_name"].toString());
     m_user.setUserPassword(userObject["user_password"].toString());
+    m_user.setUserScore(userObject["user_score"].toInt());
 
     // notify view about successful authorization
     m_isAuthorized = true;

@@ -32,7 +32,6 @@ qt_add_qml_module(appsudoku
     RESOURCES views/images/labelDifficulty.png
     QML_FILES views/SudokuGrid.qml
     QML_FILES
-    QML_FILES views/images/CustomButton.qml
     QML_FILES views/CustomButton.qml
     SOURCES view-models/serverviewmodel.h view-models/serverviewmodel.cpp
     SOURCES models/user.h models/user.cpp
@@ -41,6 +40,7 @@ qt_add_qml_module(appsudoku
     QML_FILES views/DataChangeWindow.qml
     QML_FILES views/SudokuGeniusLabel.qml
     QML_FILES views/CustomPopup.qml
+    QML_FILES views/LeaderboardWindow.qml
 
 )
 

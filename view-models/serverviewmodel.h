@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonParseError>
@@ -12,6 +13,7 @@ class ServerViewModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int userId READ userId NOTIFY userIdChanged)
+    Q_PROPERTY(int userScore READ userScore NOTIFY userScoreChanged)
     Q_PROPERTY(bool isConnected READ isConnected NOTIFY isConnectedChanged)
     Q_PROPERTY(bool isAuthorized READ isAuthorized NOTIFY isAuthorizedChanged)
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
@@ -26,6 +28,7 @@ public:
     int userId() const { return m_user.user_id(); }
     bool isConnected() const { return m_isConnected; }
     bool isAuthorized() const { return m_isAuthorized; }
+    int userScore() const { return m_user.user_score(); }
     QString userName() const { return m_user.user_name(); }
     QString userPassword() const { return m_user.user_password(); }
 
@@ -38,6 +41,7 @@ public:
     /*
      * AVAILIBLE FROM UI
      */
+    Q_INVOKABLE void getLeaderboard(int userCount);
     Q_INVOKABLE void logIn(QString username, QString password);
     Q_INVOKABLE void signUp(QString username, QString password);
     Q_INVOKABLE void getRandomGridFromServer(QString difficultyLevel);
@@ -45,11 +49,13 @@ public:
 signals:
     void userIdChanged();
     void userNameChanged();
+    void userScoreChanged();
     void isConnectedChanged();
     void isAuthorizedChanged();
     void userPasswordChanged();
     void viewMessage(const QString& message);
     void gridFromServer(const QString& grid);
+    void leaderboardRecievedFromServer(const QVariantList &leaderboard);
 
 public slots:
     /*
@@ -57,6 +63,7 @@ public slots:
      */
     void onUserIdChanged();
     void onUserNameChanged();
+    void onUserScoreChanged();
     void onUserPasswordChanged();
 
     /*

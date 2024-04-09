@@ -1,6 +1,7 @@
 #include "view-models/clientviewmodel.h"
 #include "view-models/serverviewmodel.h"
 
+#include <QIcon>
 #include <QQmlContext>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -18,6 +19,9 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
+
+    QIcon icon(":/sudoku/views/images/sudokuIcon.png");
+    app.setWindowIcon(icon);
 
     // data binding with client view-model
     ClientViewModel cViewModel;

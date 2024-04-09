@@ -67,6 +67,7 @@ void server::socketReadyRead()
                     user["user_id"] = query.value(0).toInt();
                     user["user_name"] = query.value(1).toString();
                     user["user_password"] = query.value(2).toString();
+                    user["user_score"] = query.value(3).toInt();
                 }
             }
 
@@ -111,6 +112,7 @@ void server::socketReadyRead()
                     user["user_id"] = query.value(0).toInt();
                     user["user_name"] = query.value(1).toString();
                     user["user_password"] = query.value(2).toString();
+                    user["user_score"] = query.value(3).toInt();
                 }
 
                 /*
@@ -238,6 +240,48 @@ void server::socketReadyRead()
                     responce["queryResult"] = query.value(0).toString() == newPassword ? "Success" :
                                                   "Old password entered";
                 }
+
+                sendResponceToClient(responce);
+            }
+        }
+        /*
+        * {
+        *     "type": "select leaderboard",
+        *     "userCount": userCount
+        * }
+        */
+        else if (obj["type"] == "select leaderboard") {
+            int userCount = obj["userCount"].toInt();
+
+            QSqlQuery query(dataBase);
+
+            QString strQuery = "SELECT user_name, user_score\n";
+            strQuery.append("FROM public.users\n");
+            strQuery.append("ORDER BY user_score DESC\n");
+            strQuery.append("LIMIT " + QString::number(userCount));
+
+            if (query.exec(strQuery)) {
+                /*
+                * {
+                *     "source": "select leaderboard",
+                *     "userCount" : userCount,
+                *     "queryResult": users
+                * }
+                */
+                QJsonObject responce;
+                responce["source"] = "select leaderboard";
+
+                int counter = 0;
+                QJsonArray users;
+                while (query.next()) {
+                    QJsonObject user;
+                    user["user_name"] = query.value(0).toString();
+                    user["user_score"] = query.value(1).toInt();
+                    users.append(user);
+                    counter++;
+                }
+                responce["userCount"] = counter;
+                responce["queryResult"] = users;
 
                 sendResponceToClient(responce);
             }
