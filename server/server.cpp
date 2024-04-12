@@ -286,6 +286,41 @@ void server::socketReadyRead()
                 sendResponceToClient(responce);
             }
         }
+        /*
+        * {
+        *     "type": "update user_score",
+        *     "user_name": "user_name",
+        *     "newUserScore": score
+        * }
+        */
+        else if (obj["type"] == "update user_score") {
+            int score = obj["newUserScore"].toInt();
+            QString user_name = obj["user_name"].toString();
+
+            QSqlQuery query(dataBase);
+
+            QString strQuery("UPDATE public.users\n\t");
+            strQuery.append("SET user_score= " + QString::number(score) + "\n\t");
+            strQuery.append("WHERE user_name = '" + user_name + "'\n");
+            strQuery.append("RETURNING user_score");
+
+            if (query.exec(strQuery)) {
+                /*
+                * {
+                *     "source": "update user_score",
+                *     "queryResult": newScore
+                * }
+                */
+                QJsonObject responce;
+                responce["source"] = "update user_score";
+
+                while (query.next()) {
+                    responce["queryResult"] = query.value(0).toInt();
+                }
+
+                sendResponceToClient(responce);
+            }
+        }
         else {
             qDebug() << "Unknown Json document from client";
         }

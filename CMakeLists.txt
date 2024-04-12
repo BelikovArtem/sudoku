@@ -16,7 +16,7 @@ qt_add_qml_module(appsudoku
     URI sudoku
     VERSION 1.0
     QML_FILES Main.qml
-    RESOURCES views/images/background.png views/images/profile.png views/images/settings.png views/images/SudokuGenius.png views/images/sudokuIcon.png views/images/exit.png views/images/leaderboard.png views/images/newGame.png
+    RESOURCES views/images/background.png views/images/profile.png views/images/settings.png views/images/sudokuIcon.png
     SOURCES models/cell.h models/cell.cpp
     SOURCES models/game.h models/game.cpp
     SOURCES models/cell.cpp models/cell.h models/game.cpp models/game.h
@@ -25,11 +25,8 @@ qt_add_qml_module(appsudoku
     SOURCES view-models/clientviewmodel.h view-models/clientviewmodel.cpp
     QML_FILES views/DifficultyLevelWindow.qml
     QML_FILES views/DifficultyLevelWindow.qml
-    RESOURCES views/images/difficultyHigh.png views/images/difficultyLow.png views/images/difficultyMedium.png views/images/selectDifficulty.png
-    RESOURCES views/images/cancel.png views/images/confirm.png
+    RESOURCES views/images/difficultyHigh.png views/images/difficultyLow.png views/images/difficultyMedium.png
     QML_FILES views/MainWindow.qml
-    RESOURCES views/images/gameuiprojectHigh.png views/images/gameuiprojectLow.png views/images/gameuiprojectMedium.png
-    RESOURCES views/images/labelDifficulty.png
     QML_FILES views/SudokuGrid.qml
     QML_FILES
     QML_FILES views/CustomButton.qml
@@ -41,6 +38,7 @@ qt_add_qml_module(appsudoku
     QML_FILES views/SudokuGeniusLabel.qml
     QML_FILES views/CustomPopup.qml
     QML_FILES views/LeaderboardWindow.qml
+    RESOURCES views/images/erase.png views/images/note.png views/images/tip.png views/images/undo.png
 
 )
 

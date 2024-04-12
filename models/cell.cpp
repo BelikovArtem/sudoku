@@ -13,7 +13,7 @@ Cell::Cell(const Cell &_) :
 {}
 
 void Cell::setNumber(int number) {
-    if (m_number != number) {
+    if (m_number != number && !m_isOpened) {
         m_number = number;
     }
 }

@@ -16,12 +16,13 @@ Game::Game(QObject *parent)
  */
 void Game::setGrid(QString strGrid)
 {
+    m_openedCells = 0;
     char nextCharFromString;
     int number = 0, index = 0;
 
     m_grid.clear();
     while (strGrid.length() >= 2) {
-        // get first char of the string and convert it to the char
+        // get first QChar of the QString and convert it to the char
         nextCharFromString = strGrid.at(0).toLatin1();
 
         // skip whitespaces and new lines
@@ -37,8 +38,14 @@ void Game::setGrid(QString strGrid)
             // x - cell closed, else opened
             nextCharFromString = strGrid.at(1).toLatin1();
 
-            Cell *cell = new Cell(number, nextCharFromString == 'x' ? false : true, index);
-            m_grid.append(cell);
+            if (nextCharFromString != 'x') {
+                Cell *cell = new Cell(number, true, index);
+                m_grid.append(cell);
+                m_openedCells++;
+            } else {
+                Cell *cell = new Cell(number, false, index);
+                m_grid.append(cell);
+            }
 
             // remove 2 chars from the beggining of the string
             strGrid.remove(0, 2);
@@ -52,14 +59,16 @@ void Game::setGrid(QString strGrid)
 void Game::setGameState(QString state)
 {
     m_gameState = state;
-
+    if (state == "Loose") {
+        endGame();
+        return;
+    }
     emit gameStateChanged();
 }
 
 void Game::setDifficultyLevel(QString level)
 {
     m_level = level;
-
     emit difficultyLevelChanged();
 }
 
@@ -68,17 +77,46 @@ void Game::setDifficultyLevel(QString level)
  */
 void Game::startGame()
 {
+    m_time = 0;
+    m_mistakes = 0;
+    m_score = 0;
+
     timer->start();
 
     m_gameState = "Continues";
     emit gameStateChanged();
 }
 
+void Game::endGame()
+{
+    timer->stop();
+    emit gameStateChanged();
+}
+
 void Game::enterNumberInCell(int index, int number)
 {
-    m_grid.at(index)->setNumber(number);
+    if (m_grid.at(index)->getNumber() == number) {
+        m_grid.at(index)->setIsOpened(true);
+        emit gridChanged(index);
+        m_openedCells++;
+        m_score += 250;
 
-    emit gridChanged(index);
+        if (m_openedCells == 81) {
+            m_gameState = "Win";
+            m_score += 1000;
+            endGame();
+        }
+        emit scoreChanged();
+
+    } else {
+        m_mistakes++;
+        emit mistakesChanged();
+
+        if (m_mistakes >= 3) {
+            m_gameState = "Loose";
+            endGame();
+        }
+    }
 }
 
 /*
@@ -87,6 +125,5 @@ void Game::enterNumberInCell(int index, int number)
 void Game::timerSlot()
 {
     m_time++;
-
     emit timeChanged();
 }

@@ -15,6 +15,14 @@ ClientViewModel::ClientViewModel(QObject *parent)
 /*
  * SETTERS
  */
+void ClientViewModel::setLastClickedCellIndex(int index)
+{
+    if (index >= 0 && index <= 80) {
+        m_lastClickedCellIndex = index;
+        emit lastClickedCellIndexChanged();
+    }
+}
+
 void ClientViewModel::setGameState(const QString &gameState)
 {
     m_game.setGameState(gameState);
@@ -28,10 +36,40 @@ void ClientViewModel::setDifficultyLevel(const QString &difficultyLevel)
 /*
  * AVAILIBLE FROM UI
  */
+void ClientViewModel::handleUndo()
+{
+
+}
+
+void ClientViewModel::handleEraseCell()
+{
+
+}
+
 void ClientViewModel::startNewGame(const QString &grid)
 {
     m_game.setGrid(grid);
     m_game.startGame();
+}
+
+void ClientViewModel::handleCellClicked(int index)
+{
+    m_lastClickedCellIndex = index;
+    emit lastClickedCellIndexChanged();
+}
+
+void ClientViewModel::handleNumberEntered(int number)
+{
+    if (m_game.gameState() != "Loose") {
+        if (m_lastClickedCellIndex >= 0 && m_lastClickedCellIndex <= 80 &&
+            !m_game.grid().at(m_lastClickedCellIndex)->getIsOpened()) {
+            m_game.enterNumberInCell(m_lastClickedCellIndex, number);
+        } else {
+            emit viewMessage("Select a closed cell");
+        }
+    } else {
+        emit viewMessage("Game over");
+    }
 }
 
 /*
@@ -60,6 +98,9 @@ void ClientViewModel::onMistakesChanged()
 
 void ClientViewModel::onGameStateChanged()
 {
+    if (m_game.gameState() == "Win") {
+        emit viewMessage("Congratulations :)");
+    }
     emit gameStateChanged();
 }
 
@@ -75,5 +116,6 @@ void ClientViewModel::onGridChanged(int index)
         m_grid[index] = numberToInsert;
     }
 
+    emit lastClickedCellIndexChanged();
     emit gridChanged();
 }

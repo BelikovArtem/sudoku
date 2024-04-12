@@ -8,6 +8,9 @@ Window {
     visible: true
     title: "SudokuGenius"
 
+    minimumWidth: 1000
+    minimumHeight: 680
+
     StackView {
         id: stackView
 
@@ -32,6 +35,21 @@ Window {
         function onGridFromServer(grid) {
             cViewModel.startNewGame(grid)
             stackView.push("views/GameWindow.qml")
+        }
+    }
+
+    Connections {
+        target: cViewModel
+
+        function onViewMessage(message) {
+            warningPopup.warningText = message
+            warningPopup.open()
+        }
+
+        function onScoreChanged() {
+            if (cViewModel.gameState === "Win") {
+                sViewModel.userScore = sViewModel.userScore + cViewModel.score
+            }
         }
     }
 

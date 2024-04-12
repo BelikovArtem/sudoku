@@ -9,6 +9,8 @@ GridLayout {
     rowSpacing: 5
     columnSpacing: 5
 
+    property int lastEnteredNumber: -1
+
     Repeater {
         id: parentRep
         model: 9
@@ -34,7 +36,18 @@ GridLayout {
                 return cellIndex += 12
         }
 
+        function getCellColor(cellIndex, gridIndex, cellIndexInGrid) {
+            if (cellIndex === cViewModel.lastClickedCellIndex)
+                return "#bbdefb"
+            else if (cViewModel.grid[cellIndex] === cViewModel.grid[cViewModel.lastClickedCellIndex] &&
+                     cViewModel.grid[cellIndex] !== " ")
+                return "#c3d7ea"
+            else
+                return "white"
+        }
+
         GridLayout {
+            id: sudokuSquareGrid
             rows: 3
             columns: 3
             rowSpacing: 1
@@ -55,7 +68,47 @@ GridLayout {
                     fontSize: 40
                     fontFamily: "Copperplate Gothic Light"
                     textColor: "#18228f"
-                    backgroundColor: "white"
+                    backgroundColor: parentRep.getCellColor(index, gridIndex, modelData)
+
+                    onClicked: {
+                        cViewModel.handleCellClicked(index)
+                    }
+                }
+            }
+        }
+    }
+
+    Connections {
+        target: cViewModel
+
+        function onMistakesChanged() {
+            const sudokuSquares = sudokuGrid.children
+
+            for (let j = 0; j < 9; j++) {
+                const gridCells = sudokuSquares[j].children
+                for (let i = 0; i < 9; i++) {
+                    let cell = gridCells[i]
+                    if (cell.index === cViewModel.lastClickedCellIndex) {
+                        cell.textColor = "red"
+                        cell.text = lastEnteredNumber
+                        return
+                    }
+                }
+            }
+        }
+
+        function onGridChanged() {
+            const sudokuSquares = sudokuGrid.children
+
+            for (let j = 0; j < 9; j++) {
+                const gridCells = sudokuSquares[j].children
+                for (let i = 0; i < 9; i++) {
+                    let cell = gridCells[i]
+                    if (cell.index === cViewModel.lastClickedCellIndex) {
+                        cell.textColor = "#18228f"
+                        cell.text = cViewModel.grid[cell.index]
+                        return
+                    }
                 }
             }
         }

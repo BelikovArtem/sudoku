@@ -34,6 +34,7 @@ public:
     /*
      * PUBLIC METHODS
      */
+    void endGame();
     void startGame();
     void enterNumberInCell(int index, int number);
 

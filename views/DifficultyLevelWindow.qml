@@ -6,10 +6,9 @@ Item {
     id: difficultyLvlWindow
     visible: true
 
-    Label {
-        id: selectDifficultyLabel
-        width: 350
-        height: 80
+    Text {
+        id: selectDifficultyText
+
         anchors {
             topMargin: 100
             leftMargin: 50
@@ -17,10 +16,10 @@ Item {
             left: parent.left
         }
 
-        Image {
-            anchors.fill: parent
-            source: "images/selectDifficulty.png"
-        }
+        text: "Select difficulty:"
+        font.family: "Script MT Bold"
+        color: "#1773ef"
+        font.pixelSize: 80
     }
 
     ComboBox {
@@ -28,7 +27,7 @@ Item {
         height: 50
         anchors {
             margins: 50
-            top: selectDifficultyLabel.bottom
+            top: selectDifficultyText.bottom
             left: parent.left
             right: parent.right
         }

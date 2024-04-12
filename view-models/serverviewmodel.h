@@ -13,9 +13,9 @@ class ServerViewModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int userId READ userId NOTIFY userIdChanged)
-    Q_PROPERTY(int userScore READ userScore NOTIFY userScoreChanged)
     Q_PROPERTY(bool isConnected READ isConnected NOTIFY isConnectedChanged)
     Q_PROPERTY(bool isAuthorized READ isAuthorized NOTIFY isAuthorizedChanged)
+    Q_PROPERTY(int userScore READ userScore WRITE setUserScore NOTIFY userScoreChanged)
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QString userPassword READ userPassword WRITE setUserPassword NOTIFY userPasswordChanged)
 
@@ -35,6 +35,7 @@ public:
     /*
      * SETTERS
      */
+    void setUserScore(int score);
     void setUserName(const QString &userName);
     void setUserPassword(const QString &userPassword);
 

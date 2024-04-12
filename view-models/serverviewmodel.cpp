@@ -23,9 +23,40 @@ ServerViewModel::ServerViewModel(QObject *parent)
 /*
  * SETTERS
  */
+void ServerViewModel::setUserScore(int score)
+{
+    if (m_isConnected) {
+        m_user.setUserScore(score);
+
+        /*
+        * {
+        *     "type": "update user_score",
+        *     "user_name": "user_name",
+        *     "newUserScore": score
+        * }
+        */
+        QJsonObject request;
+        request["type"] = "update user_score";
+        request["user_name"] = m_user.user_name();
+        request["newUserScore"] = score;
+
+        sendRequestToServer(request);
+
+        m_user.setUserScore(score);
+
+    } else {
+        emit viewMessage("Server isn`t connected");
+    }
+}
+
 void ServerViewModel::setUserName(const QString &userName)
 {
     if (m_isConnected) {
+        if (userName.trimmed().isEmpty()) {
+            emit viewMessage("Enter username");
+            return;
+        }
+
         /*
         * {
         *     "type": "update user_name",
@@ -49,6 +80,11 @@ void ServerViewModel::setUserName(const QString &userName)
 void ServerViewModel::setUserPassword(const QString &userPassword)
 {
     if (m_isConnected) {
+        if (userPassword.trimmed().isEmpty()) {
+            emit viewMessage("Enter password");
+            return;
+        }
+
         /*
         * {
         *     "type": "update user_password",
@@ -123,6 +159,11 @@ void ServerViewModel::getRandomGridFromServer(QString difficultyLevel)
 void ServerViewModel::logIn(QString username, QString password)
 {
     if (m_isConnected) {
+        if (username.trimmed().isEmpty() || password.trimmed().isEmpty()) {
+            emit viewMessage("Empty string found");
+            return;
+        }
+
         /*
         * {
         *     "type": "select user",
@@ -144,6 +185,11 @@ void ServerViewModel::logIn(QString username, QString password)
 void ServerViewModel::signUp(QString username, QString password)
 {
     if (m_isConnected) {
+        if (username.trimmed().isEmpty() || password.trimmed().isEmpty()) {
+            emit viewMessage("Empty string found");
+            return;
+        }
+
         /*
         * {
         *     "type": "insert user",
@@ -283,6 +329,15 @@ void ServerViewModel::socketReadyRead()
         else if (obj["source"] == "select leaderboard") {
             emit leaderboardRecievedFromServer(
                 obj["queryResult"].toArray().toVariantList());
+        }
+        /*
+        * {
+        *     "source": "update user_score",
+        *     "queryResult": newScore
+        * }
+        */
+        else if (obj["source"] == "update user_score") {
+
         }
         else {
             emit viewMessage("Unknown JSON from server");
