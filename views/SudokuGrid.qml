@@ -36,16 +36,6 @@ GridLayout {
                 return cellIndex += 12
         }
 
-        function getCellColor(cellIndex, gridIndex, cellIndexInGrid) {
-            if (cellIndex === cViewModel.lastClickedCellIndex)
-                return "#bbdefb"
-            else if (cViewModel.grid[cellIndex] === cViewModel.grid[cViewModel.lastClickedCellIndex] &&
-                     cViewModel.grid[cellIndex] !== " ")
-                return "#c3d7ea"
-            else
-                return "white"
-        }
-
         GridLayout {
             id: sudokuSquareGrid
             rows: 3
@@ -62,13 +52,15 @@ GridLayout {
                     implicitWidth: 50
                     implicitHeight: 50
 
-                    property int index: parentRep.calculateCellIndex(modelData) + parentRep.calculateGridOffset(gridIndex)
+                    property int gridOffset: parentRep.calculateGridOffset(gridIndex)
+                    property int cellIndexInGrid: parentRep.calculateCellIndex(modelData)
+                    property int index: cellIndexInGrid + gridOffset
 
                     text: cViewModel.grid[index]
                     fontSize: 40
                     fontFamily: "Copperplate Gothic Light"
                     textColor: "#18228f"
-                    backgroundColor: parentRep.getCellColor(index, gridIndex, modelData)
+                    backgroundColor: "white"
 
                     onClicked: {
                         cViewModel.handleCellClicked(index)
@@ -111,6 +103,67 @@ GridLayout {
                     }
                 }
             }
+        }
+
+        function onLastClickedCellIndexChanged() {
+            const sudokuSquares = sudokuGrid.children
+            let lastClickedCellIndex = cViewModel.lastClickedCellIndex
+
+            for (let j = 0; j < 9; j++) {
+                const squareCells = sudokuSquares[j].children
+
+                // the lastClickedCellIndex lies in the square?
+                let isInSquare = contains(squareCells, lastClickedCellIndex)
+
+
+                for (let i = 0; i < 9; i++) {
+                    let cell = squareCells[i]
+                    let index = cell.index
+
+                    let rowIndex = Math.floor(index / 9)
+
+                    //cell === clickedCell
+                    if (index === lastClickedCellIndex) {
+                        cell.backgroundColor = "#bbdefb"
+                        continue
+                    }
+                    // cell.number === clickedCell.number
+                    if (cViewModel.grid[index] === cViewModel.grid[lastClickedCellIndex] &&
+                            cViewModel.grid[index] !== " ") {
+                        cell.backgroundColor = "#c3d7ea"
+                        continue
+                    }
+                    // cell is in a square with the clicked cell
+                    if (isInSquare) {
+                        cell.backgroundColor = "#e2ebf3"
+                        continue
+                    }
+                    // cell is in a row with the clicked cell
+                    if ((lastClickedCellIndex >= rowIndex * 9 &&
+                        lastClickedCellIndex <= rowIndex * 9 + 8) &&
+                        (index >= rowIndex * 9 &&
+                        index <= rowIndex * 9 + 8)) {
+                        cell.backgroundColor = "#e2ebf3"
+                        continue
+                    }
+                    // cell is in a column with the clicked cell
+                    if ((Math.max(lastClickedCellIndex, index) -
+                        Math.min(lastClickedCellIndex, index)) % 9 === 0) {
+                        cell.backgroundColor = "#e2ebf3"
+                        continue
+                    }
+
+                    cell.backgroundColor = "white"
+                }
+            }
+        }
+
+        function contains(array, value) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].index === value)
+                    return true
+            }
+            return false
         }
     }
 }
