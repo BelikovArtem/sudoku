@@ -9,8 +9,6 @@ GridLayout {
     rowSpacing: 5
     columnSpacing: 5
 
-    property int lastEnteredNumber: -1
-
     Repeater {
         id: parentRep
         model: 9
@@ -57,13 +55,13 @@ GridLayout {
                     property int index: cellIndexInGrid + gridOffset
 
                     text: cViewModel.grid[index]
-                    fontSize: 40
+                    fontSize: cViewModel.grid[index].length > 2 ? 15 : 40
                     fontFamily: "Copperplate Gothic Light"
-                    textColor: "#18228f"
+                    textColor: cViewModel.grid[index].length > 2 ? "#6e7c8c" : "#18228f"
                     backgroundColor: "white"
 
                     onClicked: {
-                        cViewModel.handleCellClicked(index)
+                        cViewModel.lastClickedCellIndex = index
                     }
                 }
             }
@@ -73,31 +71,15 @@ GridLayout {
     Connections {
         target: cViewModel
 
-        function onMistakesChanged() {
+        function onGridChanged(index, color) {
             const sudokuSquares = sudokuGrid.children
 
             for (let j = 0; j < 9; j++) {
                 const gridCells = sudokuSquares[j].children
                 for (let i = 0; i < 9; i++) {
                     let cell = gridCells[i]
-                    if (cell.index === cViewModel.lastClickedCellIndex) {
-                        cell.textColor = "red"
-                        cell.text = lastEnteredNumber
-                        return
-                    }
-                }
-            }
-        }
-
-        function onGridChanged() {
-            const sudokuSquares = sudokuGrid.children
-
-            for (let j = 0; j < 9; j++) {
-                const gridCells = sudokuSquares[j].children
-                for (let i = 0; i < 9; i++) {
-                    let cell = gridCells[i]
-                    if (cell.index === cViewModel.lastClickedCellIndex) {
-                        cell.textColor = "#18228f"
+                    if (cell.index === index) {
+                        cell.textColor = color
                         cell.text = cViewModel.grid[cell.index]
                         return
                     }

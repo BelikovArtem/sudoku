@@ -11,6 +11,8 @@ Button {
     property color textColor: "white"
     property string fontFamily: "Arial"
     property color backgroundColor: "black"
+    property int horAl: 4       // Text.AlignHCenter
+    property int vertAl: 128    // Text.AlignVCenter
 
     contentItem: Text {
         text: parent.text
@@ -22,8 +24,8 @@ Button {
 
         color: textColor
 
-        horizontalAlignment : Text.AlignHCenter
-        verticalAlignment : Text.AlignVCenter
+        horizontalAlignment: horAl
+        verticalAlignment: vertAl
     }
 
     background: Rectangle {

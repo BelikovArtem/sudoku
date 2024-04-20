@@ -39,7 +39,9 @@ qt_add_qml_module(appsudoku
     QML_FILES views/CustomPopup.qml
     QML_FILES views/LeaderboardWindow.qml
     RESOURCES views/images/erase.png views/images/note.png views/images/tip.png views/images/undo.png
-
+    SOURCES models/commands/enternumber.cpp models/commands/enternumber.h
+    SOURCES models/commands/erasenumber.h models/commands/erasenumber.cpp
+    SOURCES models/commands/enternumberinnotemode.h models/commands/enternumberinnotemode.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

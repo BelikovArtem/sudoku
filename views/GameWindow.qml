@@ -99,9 +99,7 @@ Item {
             }
             flat: true
 
-            onClicked: {
-
-            }
+            onClicked: cViewModel.handleUndo()
         }
 
         RoundButton {
@@ -134,7 +132,7 @@ Item {
             flat: true
 
             onClicked: {
-
+                cViewModel.isNoteMode = !cViewModel.isNoteMode
             }
 
         }
@@ -190,7 +188,6 @@ Item {
                 backgroundColor: "#6dcff6"
 
                 onClicked: {
-                    sudokuGrid.lastEnteredNumber = buttonNumber
                     cViewModel.handleNumberEntered(buttonNumber)
                 }
             }
@@ -251,39 +248,30 @@ Item {
          * NUMBERS
          */
         case Qt.Key_1:
-            sudokuGrid.lastEnteredNumber = 1
             cViewModel.handleNumberEntered(1)
             break;
         case Qt.Key_2:
-            sudokuGrid.lastEnteredNumber = 2
             cViewModel.handleNumberEntered(2)
             break;
         case Qt.Key_3:
-            sudokuGrid.lastEnteredNumber = 3
             cViewModel.handleNumberEntered(3)
             break;
         case Qt.Key_4:
-            sudokuGrid.lastEnteredNumber = 4
             cViewModel.handleNumberEntered(4)
             break;
         case Qt.Key_5:
-            sudokuGrid.lastEnteredNumber = 5
             cViewModel.handleNumberEntered(5)
             break;
         case Qt.Key_6:
-            sudokuGrid.lastEnteredNumber = 6
             cViewModel.handleNumberEntered(6)
             break;
         case Qt.Key_7:
-            sudokuGrid.lastEnteredNumber = 7
             cViewModel.handleNumberEntered(7)
             break;
         case Qt.Key_8:
-            sudokuGrid.lastEnteredNumber = 8
             cViewModel.handleNumberEntered(8)
             break;
         case Qt.Key_9:
-            sudokuGrid.lastEnteredNumber = 9
             cViewModel.handleNumberEntered(9)
             break;
         /*
@@ -310,5 +298,10 @@ Item {
             }
             break;
         }
+    }
+
+    Shortcut {
+        sequence: "Ctrl+Z"
+        onActivated: cViewModel.handleUndo()
     }
 }

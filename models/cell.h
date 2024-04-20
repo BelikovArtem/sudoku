@@ -8,29 +8,37 @@ class Cell : public QObject
     Q_OBJECT
 
 public:
-    Cell(int number, int isOpened, int index);
-    explicit Cell(QObject *parent = nullptr);
     Cell(const Cell &_);
+    Cell(int number, int isOpened, int index);
 
     /*
-     * SETTERS / GETTERS
+     * GETTERS
      */
-    int getNumber() const { return m_number; }
-    void setNumber(int number);
+    int index() const { return m_index; }
+    int number() const { return m_number; }
+    bool isOpened() const { return m_isOpened; }
 
-    bool getIsOpened() const { return m_isOpened; }
+    /*
+     * SETTERS
+     */
+    // performs cell opening
     void setIsOpened(bool isOpened);
 
-    int index() const { return m_index; }
-
-signals:
-    void numberChanged();
-    void isOpenedChanged();
+    /*
+     * PUBLIC METHODS
+     */
+    void enterNumber(int number, bool isFromUndo);
+    void setNoteModeNumbers(const QString &numbers);
 
 private:
     int m_index;
     int m_number;
     bool m_isOpened;
+
+signals:
+    void isOpenedChanged(int index);
+    void noteModeNumbersChanged(int index, const QString &numbers);
+    void incorrectNumberEntered(int index, int number, bool isFromUndo);
 };
 
 #endif // CELL_H

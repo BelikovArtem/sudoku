@@ -14,6 +14,7 @@ Game::Game(QObject *parent)
 /*
  * SETTERS
  */
+// Parse QString to QList<Cell*>
 void Game::setGrid(QString strGrid)
 {
     m_openedCells = 0;
@@ -38,19 +39,25 @@ void Game::setGrid(QString strGrid)
             // x - cell closed, else opened
             nextCharFromString = strGrid.at(1).toLatin1();
 
-            if (nextCharFromString != 'x') {
-                Cell *cell = new Cell(number, true, index);
-                m_grid.append(cell);
-                m_openedCells++;
-            } else {
-                Cell *cell = new Cell(number, false, index);
-                m_grid.append(cell);
-            }
+            bool isOpened = nextCharFromString != 'x';
+
+            Cell *cell = new Cell(number, isOpened, index);
+
+            // connect to cell`s signal
+            connect(cell, &Cell::incorrectNumberEntered, this,
+                    &Game::onIncorrectNumberEntered);
+            connect(cell, &Cell::isOpenedChanged, this, &Game::onIsOpenedChanged);
+            connect(cell, &Cell::noteModeNumbersChanged, this,
+                    &Game::onNoteModeNumbersChanged);
+
+            m_grid.append(cell);
+            m_openedCells += isOpened ? 1 : 0;
 
             // remove 2 chars from the beggining of the string
             strGrid.remove(0, 2);
 
-            emit gridChanged(index);
+            QString displayData = !isOpened ? " " : QString::number(number);
+            emit gridChanged(index, displayData, false);
             index++;
         }
     }
@@ -93,22 +100,36 @@ void Game::endGame()
     emit gameStateChanged();
 }
 
-void Game::enterNumberInCell(int index, int number)
+/*
+ * PRIVATE SLOTS
+ */
+void Game::timerSlot()
 {
-    if (m_grid.at(index)->getNumber() == number) {
-        m_grid.at(index)->setIsOpened(true);
-        emit gridChanged(index);
-        m_openedCells++;
-        m_score += 250;
+    m_time++;
+    emit timeChanged();
+}
 
-        if (m_openedCells == 81) {
-            m_gameState = "Win";
-            m_score += 1000;
-            endGame();
-        }
-        emit scoreChanged();
+void Game::onIsOpenedChanged(int index)
+{
+    m_openedCells++;
 
-    } else {
+    if (m_openedCells == 81) {
+        m_gameState = "Win";
+        endGame();
+    }
+
+    emit gridChanged(index, QString::number(m_grid.at(index)->number()), false);
+}
+
+void Game::onNoteModeNumbersChanged(int index, const QString &numbers)
+{
+    emit gridChanged(index, numbers, false);
+}
+
+void Game::onIncorrectNumberEntered(int index, int number, bool isFromUndo)
+{
+    // if number is zero, just clear the cell on a View
+    if (!isFromUndo && number != 0) {
         m_mistakes++;
         emit mistakesChanged();
 
@@ -117,13 +138,7 @@ void Game::enterNumberInCell(int index, int number)
             endGame();
         }
     }
-}
 
-/*
- * PRIVATE SLOTS
- */
-void Game::timerSlot()
-{
-    m_time++;
-    emit timeChanged();
+    QString displayData = number == 0 ? " " : QString::number(number);
+    emit gridChanged(index, displayData, true);
 }

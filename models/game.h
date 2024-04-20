@@ -36,16 +36,15 @@ public:
      */
     void endGame();
     void startGame();
-    void enterNumberInCell(int index, int number);
 
 signals:
     void timeChanged();
-    void gridChanged(int index);
     void scoreChanged();
     void mistakesChanged();
     void usernameChanged();
     void gameStateChanged();
     void difficultyLevelChanged();
+    void gridChanged(int index, const QString &number, bool isMistake);
 
 private:
     QTimer *timer;
@@ -54,12 +53,15 @@ private:
     long m_time;
     int m_score;
     int m_mistakes;
-    QString m_level;
+    QString m_level;        // difficulty level
     int m_openedCells;
     QString m_gameState;
 
 private slots:
     void timerSlot();
+    void onIsOpenedChanged(int index);
+    void onNoteModeNumbersChanged(int index, const QString &numbers);
+    void onIncorrectNumberEntered(int index, int number, bool isFromUndo);
 };
 
 #endif // GAME_H
