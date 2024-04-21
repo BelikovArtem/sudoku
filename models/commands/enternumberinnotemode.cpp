@@ -8,11 +8,12 @@ EnterNumberInNoteMode::EnterNumberInNoteMode(Cell *cell, int numberToEnter,
 
 void EnterNumberInNoteMode::undo()
 {
-    if (m_numbersBeforeChanges.length() > 1)
-        m_cell->setNoteModeNumbers(m_numbersBeforeChanges);
-    else
-        m_cell->enterNumber(m_numbersBeforeChanges.toInt(), true);
-
+    if (!m_cell->isOpened()) {
+        if (m_numbersBeforeChanges.length() > 1)
+            m_cell->setNoteModeNumbers(m_numbersBeforeChanges);
+        else
+            m_cell->enterNumber(m_numbersBeforeChanges.toInt(), true);
+    }
 }
 
 void EnterNumberInNoteMode::redo()

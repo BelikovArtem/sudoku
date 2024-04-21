@@ -115,7 +115,7 @@ GridLayout {
                     }
                     // cell.number === clickedCell.number
                     if (cViewModel.grid[index] === cViewModel.grid[lastClickedCellIndex] &&
-                            cViewModel.grid[index] !== " ") {
+                            cViewModel.grid[index] !== " " && cViewModel.grid[index].length < 2) {
                         cell.backgroundColor = "#c3d7ea"
                         continue
                     }
