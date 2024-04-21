@@ -48,6 +48,7 @@ public:
     /*
      * AVAILIBLE FROM UI
      */
+    Q_INVOKABLE void handleTip();
     Q_INVOKABLE void handleUndo();
     Q_INVOKABLE void handleEraseCell();
     Q_INVOKABLE void handleNumberEntered(int number);

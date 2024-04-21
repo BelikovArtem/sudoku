@@ -46,7 +46,7 @@ GridLayout {
                 id: childRep
                 model: 9
 
-                CustomButton {
+                GameCellButton {
                     implicitWidth: 50
                     implicitHeight: 50
 
@@ -54,8 +54,7 @@ GridLayout {
                     property int cellIndexInGrid: parentRep.calculateCellIndex(modelData)
                     property int index: cellIndexInGrid + gridOffset
 
-                    text: cViewModel.grid[index]
-                    fontSize: cViewModel.grid[index].length > 2 ? 15 : 40
+                    textVal: cViewModel.grid[index]
                     fontFamily: "Copperplate Gothic Light"
                     textColor: "#18228f"
                     backgroundColor: "white"
@@ -80,7 +79,12 @@ GridLayout {
                     let cell = gridCells[i]
                     if (cell.index === index) {
                         cell.textColor = color
-                        cell.text = cViewModel.grid[cell.index]
+
+                        if (cViewModel.grid[cell.index].length > 1) {
+                            let cellWithGrid = Qt.createComponent("CustomButtomNoteMode.qml")
+                            cellWithGrid.text = cViewModel.grid[cell.index]
+                            gridCells[i] = cellWithGrid
+                        }
                         return
                     }
                 }

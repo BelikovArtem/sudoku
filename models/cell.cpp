@@ -11,11 +11,11 @@ Cell::Cell(const Cell &_) :
 /*
  * SETTERS
  */
-void Cell::setIsOpened(bool isOpened) {
+void Cell::setIsOpened(bool isOpened, bool isTip) {
     // if the cell isn`t already opened
     if (!m_isOpened && isOpened) {
         m_isOpened = isOpened;
-        emit isOpenedChanged(m_index);
+        emit isOpenedChanged(m_index, isTip);
     }
 }
 
@@ -28,7 +28,7 @@ void Cell::enterNumber(int number, bool isFromUndo)
         emit incorrectNumberEntered(m_index, number, isFromUndo);
     } else {
         m_isOpened = true;
-        emit isOpenedChanged(m_index);
+        emit isOpenedChanged(m_index, false);
     }
 }
 

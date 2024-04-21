@@ -99,6 +99,13 @@ Item {
             }
             flat: true
 
+            ToolTip {
+                delay: 100
+                timeout: 5000
+                visible: undoButton.hovered
+                text: "Undo"
+            }
+
             onClicked: cViewModel.handleUndo()
         }
 
@@ -115,6 +122,13 @@ Item {
             }
             flat: true
 
+            ToolTip {
+                delay: 100
+                timeout: 5000
+                visible: eraseButton.hovered
+                text: "Erase"
+            }
+
             onClicked: cViewModel.handleEraseCell()
         }
 
@@ -130,6 +144,13 @@ Item {
                 source: "images/note.png"
             }
             flat: true
+
+            ToolTip {
+                delay: 100
+                timeout: 5000
+                visible: noteButton.hovered
+                text: "Note"
+            }
 
             onClicked: {
                 cViewModel.isNoteMode = !cViewModel.isNoteMode
@@ -152,8 +173,15 @@ Item {
             }
             flat: true
 
-            onClicked: {
+            ToolTip {
+                delay: 100
+                timeout: 5000
+                visible: tipButton.hovered
+                text: "Tip"
+            }
 
+            onClicked: {
+                cViewModel.handleTip()
             }
         }
     }

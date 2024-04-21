@@ -41,6 +41,21 @@ void ClientViewModel::setDifficultyLevel(const QString &difficultyLevel)
 /*
  * AVAILIBLE FROM UI
  */
+void ClientViewModel::handleTip()
+{
+    if (m_game.gameState() == "Continues") {
+        if (isLastClickedCellAvailible()) {
+            Cell *cell = m_game.grid().at(m_lastClickedCellIndex);
+            // open a closed cell
+            cell->setIsOpened(true, true);
+        } else {
+            emit viewMessage("Select a closed cell");
+        }
+    } else {
+        emit viewMessage("Game over");
+    }
+}
+
 void ClientViewModel::handleUndo()
 {
     if (m_game.gameState() == "Continues") {
@@ -101,8 +116,6 @@ void ClientViewModel::handleNumberEntered(int number)
         if (isLastClickedCellAvailible()) {
             Cell *cell = m_game.grid().at(m_lastClickedCellIndex);
             const QString dataBeforeChanges = m_grid.at(m_lastClickedCellIndex);
-            QString displayData = dataBeforeChanges;
-
 
             // create a new EnterNumberInNoteMode command
             EnterNumberInNoteMode *enterNumberInNoteModeCommand =

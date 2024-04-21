@@ -109,15 +109,31 @@ void Game::timerSlot()
     emit timeChanged();
 }
 
-void Game::onIsOpenedChanged(int index)
+void Game::onIsOpenedChanged(int index, bool isTip)
 {
     m_openedCells++;
 
+    if (!isTip) {
+        m_score += 150;
+    }
+
     if (m_openedCells == 81) {
+
+        if (m_level == "Low") {
+            m_score += 250;
+        } else if (m_level == "Medium") {
+            m_score += 500;
+        } else {
+            m_score += 1000;
+        }
+        m_score -= m_time;
+        if (m_score < 100) m_score = 100;
+
         m_gameState = "Win";
         endGame();
     }
 
+    emit scoreChanged();
     emit gridChanged(index, QString::number(m_grid.at(index)->number()), false);
 }
 

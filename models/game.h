@@ -59,7 +59,7 @@ private:
 
 private slots:
     void timerSlot();
-    void onIsOpenedChanged(int index);
+    void onIsOpenedChanged(int index, bool isTip);
     void onNoteModeNumbersChanged(int index, const QString &numbers);
     void onIncorrectNumberEntered(int index, int number, bool isFromUndo);
 };

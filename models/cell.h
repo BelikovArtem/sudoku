@@ -22,7 +22,7 @@ public:
      * SETTERS
      */
     // performs cell opening
-    void setIsOpened(bool isOpened);
+    void setIsOpened(bool isOpened, bool isTip);
 
     /*
      * PUBLIC METHODS
@@ -36,7 +36,7 @@ private:
     bool m_isOpened;
 
 signals:
-    void isOpenedChanged(int index);
+    void isOpenedChanged(int index, bool isTip);
     void noteModeNumbersChanged(int index, const QString &numbers);
     void incorrectNumberEntered(int index, int number, bool isFromUndo);
 };
