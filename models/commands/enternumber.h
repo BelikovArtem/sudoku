@@ -8,7 +8,7 @@
 class EnterNumber : public QUndoCommand
 {
 public:
-    EnterNumber(Cell* cell, int numberToEnter, int numberBeforeChanges);
+    EnterNumber(Cell* cell, int numberToEnter, QString dataBeforeChanges);
 
     void undo() override;
     void redo() override;
@@ -16,7 +16,7 @@ public:
 private:
     Cell *m_cell;
     int m_numberToEnter;
-    int m_numberBeforeChanges;
+    QString m_dataBeforeChanges;
 };
 
 #endif // ENTERNUMBER_H

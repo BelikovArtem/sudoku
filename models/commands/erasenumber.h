@@ -8,13 +8,13 @@
 class EraseNumber : public QUndoCommand
 {
 public:
-    EraseNumber(Cell *cell, int numberBeforeChanges);
+    EraseNumber(Cell *cell, QString numberBeforeChanges);
     void undo() override;
     void redo() override;
 
 private:
     Cell *m_cell;
-    int m_numberBeforeChanges;
+    QString m_numberBeforeChanges;
 };
 
 #endif // ERASENUMBER_H

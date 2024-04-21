@@ -56,8 +56,8 @@ void Game::setGrid(QString strGrid)
             // remove 2 chars from the beggining of the string
             strGrid.remove(0, 2);
 
-            QString displayData = !isOpened ? " " : QString::number(number);
-            emit gridChanged(index, displayData, false);
+            QString displayNumber = isOpened ? QString::number(number) : " ";
+            emit gridChanged(index, displayNumber, false);
             index++;
         }
     }

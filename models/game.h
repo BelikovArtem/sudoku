@@ -44,7 +44,7 @@ signals:
     void usernameChanged();
     void gameStateChanged();
     void difficultyLevelChanged();
-    void gridChanged(int index, const QString &number, bool isMistake);
+    void gridChanged(int index, const QString &data, bool isMistake);
 
 private:
     QTimer *timer;

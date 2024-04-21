@@ -57,8 +57,7 @@ void ClientViewModel::handleEraseCell()
         // check lastClickedCellIndex and cell`s openStatus
         if (isLastClickedCellAvailible()) {
             Cell *cell = m_game.grid().at(m_lastClickedCellIndex);
-            int numberBeforeChanges = m_grid.at(m_lastClickedCellIndex) == " " ? 0 :
-                m_grid.at(m_lastClickedCellIndex).toInt();
+            QString numberBeforeChanges = m_grid.at(m_lastClickedCellIndex);
             // create a new EraseNumber command
             EraseNumber *eraseNumberCommand = new EraseNumber(cell, numberBeforeChanges);
             /* push created command to the commands stack
@@ -80,40 +79,38 @@ void ClientViewModel::startNewGame(const QString &grid)
 
 void ClientViewModel::handleNumberEntered(int number)
 {
+    if (m_game.gameState() == "Loose") {
+        emit viewMessage("Game over");
+        return;
+    }
+
     if (m_game.gameState() == "Continues" && !m_isNoteMode) {
         if (isLastClickedCellAvailible()) {
             Cell *cell = m_game.grid().at(m_lastClickedCellIndex);
-            int numberBeforeChanges = m_grid.at(m_lastClickedCellIndex) == " " ? 0 :
-                m_grid.at(m_lastClickedCellIndex).toInt();
+            const QString dataBeforeChanges = m_grid.at(m_lastClickedCellIndex);
             // create a new EnterNumber command
             EnterNumber *enterNumberCommand = new EnterNumber(cell, number,
-                numberBeforeChanges);
+                dataBeforeChanges);
             /* push created command to the commands stack
              * stack invokes the command automaticaly */
             commandsStack.push(enterNumberCommand);
         } else {
             emit viewMessage("Select a closed cell");
         }
-    } else if (m_isNoteMode) {
+    } else if (m_game.gameState() == "Continues" && m_isNoteMode) {
         if (isLastClickedCellAvailible()) {
             Cell *cell = m_game.grid().at(m_lastClickedCellIndex);
-            QString displayData = m_grid.at(m_lastClickedCellIndex);
+            const QString dataBeforeChanges = m_grid.at(m_lastClickedCellIndex);
+            QString displayData = dataBeforeChanges;
 
-            if (displayData.length() < 9) {
-                displayData = "     \n"
-                              "     \n"
-                              "     ";
-            }
 
             // create a new EnterNumberInNoteMode command
             EnterNumberInNoteMode *enterNumberInNoteModeCommand =
-                new EnterNumberInNoteMode(cell, number, displayData);
+                new EnterNumberInNoteMode(cell, number, dataBeforeChanges);
             commandsStack.push(enterNumberInNoteModeCommand);
         } else {
             emit viewMessage("Select a closed cell");
         }
-    } else {
-        emit viewMessage("Game over");
     }
 }
 
@@ -149,16 +146,15 @@ void ClientViewModel::onGameStateChanged()
     emit gameStateChanged();
 }
 
-void ClientViewModel::onGridChanged(int index, const QString &displayData, bool isMistake)
+void ClientViewModel::onGridChanged(int index, const QString &data, bool isMistake)
 {
     if (index > m_grid.count() - 1) {
-        m_grid.append(displayData);
+        m_grid.append(data);
     } else {
-        m_grid[index] = displayData;
+        m_grid[index] = data;
     }
 
     emit lastClickedCellIndexChanged();
-    // display cell with standard color
     emit gridChanged(index, isMistake ? "red" : "#18228f");
 }
 

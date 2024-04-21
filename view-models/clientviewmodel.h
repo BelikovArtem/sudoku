@@ -73,7 +73,7 @@ public slots:
     void onScoreChanged();
     void onMistakesChanged();
     void onGameStateChanged();
-    void onGridChanged(int index, const QString &displayData, bool isMistake);
+    void onGridChanged(int index, const QString &data, bool isMistake);
 
 private:
     Game m_game;

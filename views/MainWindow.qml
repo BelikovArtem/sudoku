@@ -80,8 +80,8 @@ Item {
         height: 90
 
         anchors {
-            top: settingsButton.bottom
-            topMargin: 80
+            top: sudokuIcon.top
+            topMargin: 40
             right: parent.right
             rightMargin: 50
         }

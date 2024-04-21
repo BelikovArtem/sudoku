@@ -8,12 +8,22 @@ EnterNumberInNoteMode::EnterNumberInNoteMode(Cell *cell, int numberToEnter,
 
 void EnterNumberInNoteMode::undo()
 {
-    m_cell->setNoteModeNumbers(m_numbersBeforeChanges);
+    if (m_numbersBeforeChanges.length() > 1)
+        m_cell->setNoteModeNumbers(m_numbersBeforeChanges);
+    else
+        m_cell->enterNumber(m_numbersBeforeChanges.toInt(), true);
+
 }
 
 void EnterNumberInNoteMode::redo()
 {
     QString numbers = m_numbersBeforeChanges;
+
+    if (numbers.length() < 9) {
+        numbers = "     \n"
+                  "     \n"
+                  "     ";
+    }
 
     int cnt = -1;
     for (int i = 0; i < numbers.length(); i++) {

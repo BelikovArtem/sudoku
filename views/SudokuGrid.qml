@@ -57,7 +57,7 @@ GridLayout {
                     text: cViewModel.grid[index]
                     fontSize: cViewModel.grid[index].length > 2 ? 15 : 40
                     fontFamily: "Copperplate Gothic Light"
-                    textColor: cViewModel.grid[index].length > 2 ? "#6e7c8c" : "#18228f"
+                    textColor: "#18228f"
                     backgroundColor: "white"
 
                     onClicked: {

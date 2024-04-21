@@ -3,7 +3,6 @@
 
 #include "../cell.h"
 #include <QUndoCommand>
-#include <QDebug>
 
 class EnterNumberInNoteMode : public QUndoCommand
 {
