@@ -144,6 +144,10 @@ Item {
         fontFamily: "Copperplate Gothic Light"
         backgroundColor: "#4f72eb"
 
+        onClicked: {
+           Qt.quit()
+        }
+
     }
 
     CustomPopup {

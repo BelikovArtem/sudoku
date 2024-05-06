@@ -1,7 +1,6 @@
 #ifndef ENTERNUMBER_H
 #define ENTERNUMBER_H
 
-#include <QObject>
 #include <QUndoCommand>
 #include "../cell.h"
 
