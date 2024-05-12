@@ -8,7 +8,7 @@ Button {
     height: 100
     visible: true
 
-    property string textVal: "Example"
+    property string textVal: " "
     property color textColor: "white"
     property string fontFamily: "Arial"
     property color backgroundColor: "black"

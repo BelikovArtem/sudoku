@@ -58,14 +58,17 @@ Item {
         }
     }
 
+    Image {
+       anchors.fill: parent
+       source: "images/background.png"
+    }
+
     CustomButton {
         id: confirmButton
         width: 280
         height: 90
 
         anchors {
-            //top: comboBox.top
-            //topMargin: 200
             left: parent.left
             leftMargin: 200
             bottom: parent.bottom
@@ -102,8 +105,6 @@ Item {
         height: 90
 
         anchors {
-            //top: comboBox.top
-            //topMargin: 200
             right: parent.right
             rightMargin: 200
             bottom: parent.bottom

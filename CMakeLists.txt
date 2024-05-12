@@ -43,6 +43,8 @@ qt_add_qml_module(appsudoku
     SOURCES models/commands/erasenumber.h models/commands/erasenumber.cpp
     SOURCES models/commands/enternumberinnotemode.h models/commands/enternumberinnotemode.cpp
     QML_FILES views/GameCellButton.qml
+    QML_FILES
+    QML_FILES views/ExitWindow.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -6,7 +6,7 @@ Button {
     height: 100
     visible: true
 
-    text: "Example"
+    text: " "
     property int fontSize: 26
     property color textColor: "white"
     property string fontFamily: "Arial"

@@ -70,8 +70,6 @@ void ServerViewModel::setUserName(const QString &userName)
         request["newUsername"] = userName;
 
         sendRequestToServer(request);
-
-        m_user.setUserName(userName);
     } else {
         emit viewMessage("Server isn`t connected");
     }
@@ -88,18 +86,18 @@ void ServerViewModel::setUserPassword(const QString &userPassword)
         /*
         * {
         *     "type": "update user_password",
-        *     "oldPassword": "user_password"
-        *     "newPassword": "user_password"
+        *     "oldPassword": "user_password",
+        *     "newPassword": "user_password",
+        *     "userName": "user_name"
         * }
         */
         QJsonObject request;
         request["type"] = "update user_password";
         request["oldPassword"] = m_user.user_password();
         request["newPassword"] = userPassword;
+        request["userName"] = m_user.user_name();
 
         sendRequestToServer(request);
-
-        m_user.setUserPassword(userPassword);
     } else {
         emit viewMessage("Server isn`t connected");
     }
@@ -299,24 +297,36 @@ void ServerViewModel::socketReadyRead()
         else if (obj["source"] == "select grid") {
             QString queryResult = obj["queryResult"].toString();
 
-            emit gridFromServer(queryResult);
+            if (queryResult.isEmpty()) {
+                emit viewMessage("Server can`t load grid");
+            } else {
+                emit gridFromServer(queryResult);
+            }
         }
         /*
         * {
         *     "source": "update user_name",
-        *     "queryResult": "Success" | "Username already exists"
+        *     "queryResult": "Success" | "Username already exists",
+        *     "newUsername": user_name
         * }
         */
         else if (obj["source"] == "update user_name") {
+            if (obj["queryResult"] == "Success") {
+                m_user.setUserName(obj["newUsername"].toString());
+            }
             emit viewMessage(obj["queryResult"].toString());
         }
         /*
         * {
         *     "source": "update user_password",
-        *     "queryResult": "Success" | "Old password entered"
+        *     "queryResult": "Success" | "Old password entered",
+        *     "newPassword": user_password
         * }
         */
         else if (obj["source"] == "update user_password") {
+            if (obj["queryResult"] == "Success") {
+                m_user.setUserPassword(obj["newPassword"].toString());
+            }
             emit viewMessage(obj["queryResult"].toString());
         }
         /*

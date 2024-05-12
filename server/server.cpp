@@ -190,59 +190,75 @@ void server::socketReadyRead()
             strQuery.append("WHERE user_name = '" + oldUsername + "'\n");
             strQuery.append("RETURNING user_name");
 
+            /*
+            * {
+            *     "source": "update user_name",
+            *     "queryResult": "Success" | "Username already exists",
+            *     "newUsername": user_name
+            * }
+            */
+            QJsonObject responce;
+            responce["source"] = "update user_name";
             if (query.exec(strQuery)) {
-                /*
-                * {
-                *     "source": "update user_name",
-                *     "queryResult": "Success" | "Username already exists"
-                * }
-                */
-                QJsonObject responce;
-                responce["source"] = "update user_name";
-
                 while (query.next()) {
                     responce["queryResult"] = query.value(0).toString() == newUsername ? "Success" :
-                        "Username already exists";
-                }
-
-                sendResponceToClient(responce);
+                        "Error while updatig username";
+                    responce["newUsername"] = query.value(0).toString();
+                }   
+            } else {
+                responce["queryResult"] = "Username already exists";
+                responce["newUsername"] = oldUsername;
             }
+            sendResponceToClient(responce);
         }
         /*
         * {
         *     "type": "update user_password",
-        *     "oldPassword": "user_password"
-        *     "newPassword": "user_password"
+        *     "oldPassword": "user_password",
+        *     "newPassword": "user_password",
+        *     "userName": "user_name"
         * }
         */
         else if (obj["type"] == "update user_password") {
             QString oldPassword = obj["oldPassword"].toString();
             QString newPassword = obj["newPassword"].toString();
+            QString userName = obj["userName"].toString();
+
+            /*
+            * {
+            *     "source": "update user_password",
+            *     "queryResult": "Success" | "Old password entered",
+            *     "newPassword": user_password
+            * }
+            */
+            QJsonObject responce;
+            responce["source"] = "update user_password";
+            if (oldPassword == newPassword) {
+                responce["queryResult"] = "Old password entered";
+                responce["newPassword"] = oldPassword;
+                sendResponceToClient(responce);
+                return;
+            }
 
             QSqlQuery query(dataBase);
 
             QString strQuery("UPDATE public.users\n\t");
             strQuery.append("SET user_password = '" + newPassword + "'\n\t");
-            strQuery.append("WHERE user_password = '" + oldPassword + "'\n");
+            strQuery.append("WHERE user_name = '" + userName + "'\n");
             strQuery.append("RETURNING user_password");
 
             if (query.exec(strQuery)) {
-                /*
-                * {
-                *     "source": "update user_password",
-                *     "queryResult": "Success" | "Old password entered"
-                * }
-                */
-                QJsonObject responce;
-                responce["source"] = "update user_password";
 
                 while (query.next()) {
-                    responce["queryResult"] = query.value(0).toString() == newPassword ? "Success" :
-                                                  "Old password entered";
+                    responce["queryResult"] = "Success";
+                    responce["newPassword"] = newPassword;
                 }
 
-                sendResponceToClient(responce);
+            } else {
+                responce["queryResult"] = "Error while updating password";
+                responce["newPassword"] = oldPassword;
             }
+            sendResponceToClient(responce);
         }
         /*
         * {

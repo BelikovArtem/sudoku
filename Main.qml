@@ -3,6 +3,7 @@ import QtQuick.Controls
 import "views"
 
 Window {
+    id: rootWindow
     width: 1024
     height: 680
     visible: true
@@ -60,4 +61,13 @@ Window {
         width: 550
         height: 50
     }
+
+
+    property bool closing: false
+
+    onClosing: {
+        close.accepted = closing
+        onTriggered: stackView.push("views/ExitWindow.qml")
+    }
+
 }
